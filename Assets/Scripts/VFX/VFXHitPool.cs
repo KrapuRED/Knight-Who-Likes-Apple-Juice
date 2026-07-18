@@ -6,7 +6,8 @@ public class VFXHitPool : MonoBehaviour
     public static VFXHitPool Instance {get; private set;}
 
     [SerializeField] private Transform hitVFXContainer;
-    [SerializeField] private HitboxVFX prefab;
+    [SerializeField] private HitboxVFX playerPrefab;
+    [SerializeField] private HitboxVFX projectilePrefab;
     [SerializeField] private int defaultCapacity = 10;
     [SerializeField] private int maxSize = 50;
 
@@ -22,7 +23,7 @@ public class VFXHitPool : MonoBehaviour
         }
         
         _pool = new ObjectPool<HitboxVFX>(
-            createFunc: () => Instantiate(prefab),
+            createFunc: () => Instantiate(projectilePrefab),
             actionOnGet: vfx => vfx.gameObject.SetActive(true),
             actionOnRelease: vfx => vfx.gameObject.SetActive(false),
             actionOnDestroy: vfx => Destroy(vfx.gameObject),
@@ -37,6 +38,15 @@ public class VFXHitPool : MonoBehaviour
         HitboxVFX vfx = _pool.Get();
         vfx.transform.SetPositionAndRotation(position, rotation);
         vfx.Init(damage, Release);
+        return vfx;
+    }
+    
+    public HitboxVFX SpawnProjectile(Vector3 startPosition, Vector3 targetPosition, float damage, CharacterType characterType)
+    {
+        HitboxVFX vfx = _pool.Get();
+        vfx.transform.position = startPosition;
+        vfx.transform.rotation = Quaternion.LookRotation(Vector3.forward, targetPosition - startPosition); // 2D-friendly facing
+        vfx.InitProjectile(characterType ,damage, targetPosition, Release);
         return vfx;
     }
     

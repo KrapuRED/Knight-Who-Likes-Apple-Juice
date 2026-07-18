@@ -20,7 +20,7 @@ public class ManagerPosition : MonoBehaviour
 
     public void UpdateCurrentPlayerPosition(PointMovement currentPointPlayer)
     {
-        currentPointPlayer = currentPointPlayer;
+        currPointPlayer = currentPointPlayer;
     }
 
     public PointMovement GetRandomPoint()
@@ -28,6 +28,23 @@ public class ManagerPosition : MonoBehaviour
         int randomIndex = Random.Range(0, pointMovements.Count);
         
         return pointMovements[randomIndex];
+    }
+
+    public void DropHitBoxByPoint(PointMovement attackPoint)
+    {
+        bool foundMatch = false;
+
+        foreach (var point in pointMovements)
+        {
+            if (attackPoint.PointDirection == point.PointDirection)
+            {
+                attackPoint.ActivateHitBox();
+                foundMatch = true;
+            }
+        }
+
+        if (!foundMatch)
+            Debug.LogWarning($"No point found matching direction {attackPoint.PointDirection}! Check PointDirection values in pointMovements list.");
     }
     
     public Transform GetCurrentPlayer() => currPointPlayer.transform;

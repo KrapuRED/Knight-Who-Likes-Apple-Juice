@@ -16,4 +16,11 @@ public class CharacterAttack : MonoBehaviour
         
         VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);    
     }
+
+
+    public void OnAttackByState(PointMovement currentPoint)
+    {
+        Debug.Log($"Attack pos {currentPoint.gameObject.name}");
+        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint);
+    }
 }

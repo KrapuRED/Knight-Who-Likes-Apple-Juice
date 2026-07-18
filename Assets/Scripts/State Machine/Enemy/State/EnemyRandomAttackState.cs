@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyAttackState", menuName = "State Machine/Enemy/State/EnemyAttackState")]
+[CreateAssetMenu(fileName = "EnemyRandomAttackState", menuName = "State Machine/Enemy/State/EnemyRandomAttackState")]
 
-public class EnemyAttackState : StateSO
+public class EnemyRandomAttackState : StateSO
 {
     [SerializeField] private float minAttackTime;
     [SerializeField] private float maxAttackTime;
@@ -15,27 +15,23 @@ public class EnemyAttackState : StateSO
         // Take any random position that player can move or attack current player pos
     }
 
-    public override void ExcuteState()
-    {
-        CheckAttackState();
-    }
-
-    public override void ExitState()
-    {
-        
-    }
-
-    private void CheckAttackState()
+    public override void ExcuteState(Character character)
     {
         _currTime += Time.deltaTime;
 
         if (_currTime >= _targetTime)
         {
             var point = ManagerPosition.Instance.GetRandomPoint();
-        
-            Debug.Log($"Enemy attack : {point.gameObject.name}");
+            
+            character.CharacterAttack.OnAttackByState(point);
+            
             ResetCondition();
         }
+    }
+
+    public override void ExitState()
+    {
+        
     }
     
     private void ResetCondition()

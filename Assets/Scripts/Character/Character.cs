@@ -1,8 +1,15 @@
 using System;
 using UnityEngine;
 
+public enum CharacterType
+{
+    Player, 
+    Enemy
+}
+
 public class Character : MonoBehaviour
 { 
+    [SerializeField] private CharacterType characterType;
     [SerializeField] private CharacterMovement characterMovement;
     [SerializeField] private CharacterAttack characterAttack;
     [SerializeField] private CharacterHealth characterHealth;
@@ -10,6 +17,7 @@ public class Character : MonoBehaviour
     public CharacterMovement CharacterMovement => characterMovement;
     public CharacterAttack CharacterAttack => characterAttack;
     public CharacterHealth CharacterHealth => characterHealth;
+    public CharacterType CharacterType => characterType;
     
     private void Awake()
     {

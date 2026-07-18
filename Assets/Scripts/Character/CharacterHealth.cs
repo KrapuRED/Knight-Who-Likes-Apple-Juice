@@ -7,7 +7,7 @@ public class CharacterHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
-    [SerializeField] private StatusBarUI healthBarUI;
+    [SerializeField] private HeallthStatusBarUI healthBarUI;
     
     private void Start()
     {

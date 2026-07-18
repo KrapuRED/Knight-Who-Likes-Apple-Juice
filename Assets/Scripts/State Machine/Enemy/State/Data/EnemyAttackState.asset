@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d264511c0798d0440b5ec7c4cd3758c5, type: 3}
   m_Name: EnemyAttackState
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackState
-  minAttackTime: 3
-  maxAttackTime: 5
+  minAttackTime: 10
+  maxAttackTime: 20
