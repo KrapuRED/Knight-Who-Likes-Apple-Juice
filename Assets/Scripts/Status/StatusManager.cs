@@ -9,11 +9,13 @@ public class StatusManager : MonoBehaviour
     [SerializeField] private float maxStamina;
     [SerializeField] private float currentStamina;
     [SerializeField] private float rateStamina;
+    [SerializeField] private StatusBarUI staminaBarUI;
     
     [Header("Attack bar Config")]
     [SerializeField] private float maxAttackBar;
     [SerializeField] private float currentAttackBar;
     [SerializeField] private float rateAttackBar;
+    [SerializeField] private StatusBarUI attackBarUI;
     
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class StatusManager : MonoBehaviour
             return;
         
         currentStamina += Time.deltaTime * rateStamina;
+        staminaBarUI.UpdateStatusBar(currentStamina, maxStamina);
     }
 
     private void UpdateAttackBar()
@@ -45,15 +48,24 @@ public class StatusManager : MonoBehaviour
             return;
         
         currentAttackBar += Time.deltaTime * rateAttackBar;
+        attackBarUI.UpdateStatusBar(currentAttackBar, maxAttackBar);
     }
 
-    public void UseStamina(float amount)
+    public bool UseStamina(float amount)
     {
-        
+        if (currentStamina < amount)
+            return false;
+    
+        currentStamina -= amount;
+        return true;
     }
 
-    public void UseAttackBar(float amount)
+    public bool UseAttackBar()
     {
+        if (currentAttackBar < maxAttackBar)
+            return false;
         
+        currentAttackBar = 0;
+        return true;
     }
 }

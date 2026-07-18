@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class PlayerCharacter : Character, IDamageable
 {
+    [SerializeField] private float dodgeCost;
     [SerializeField] private float durationImmune;
     [SerializeField] private bool isImmune = false;
     private float _remainingImmune;
 
+    public float DodgeCost => dodgeCost;
+    
     private void Update()
     {
         if (_remainingImmune <= 0)
@@ -24,7 +27,7 @@ public class PlayerCharacter : Character, IDamageable
         {
             return;
         }
-        
+            
         isImmune = true;
         _remainingImmune = durationImmune;
     }

@@ -11,6 +11,9 @@ public class CharacterAttack : MonoBehaviour
     {
         if (!context.performed) return;
         
+        if (!StatusManager.Instance.UseAttackBar())
+            return;
+        
         VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);    
     }
 }

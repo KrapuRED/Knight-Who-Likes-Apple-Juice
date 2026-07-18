@@ -62,7 +62,6 @@ public class CharacterMovement : MonoBehaviour
 
         if (_moveRoutine != null)
         {
-            _moveRoutine = null;
             StopCoroutine(_moveRoutine);
         }
 
@@ -84,12 +83,14 @@ public class CharacterMovement : MonoBehaviour
     
     public void OnMovementInput(InputAction.CallbackContext context)
     { 
-        Vector2 dir =  context.ReadValue<Vector2>();
-        
-        if (context.performed)
-        {
-            ownerCharacter.OnDodge();
-            OnMove(dir);
-        }
+        if (!context.performed) return;
+
+        Vector2 dir = context.ReadValue<Vector2>();
+
+        if (!StatusManager.Instance.UseStamina(ownerCharacter.DodgeCost))
+            return;
+
+        ownerCharacter.OnDodge();
+        OnMove(dir);
     }
 }
