@@ -25,6 +25,7 @@ public class CharacterHealth : MonoBehaviour
 
     public void UpdateHealthRestore(float amount)
     {
+        Debug.Log($"{gameObject.name} is restored {amount}");
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 }
