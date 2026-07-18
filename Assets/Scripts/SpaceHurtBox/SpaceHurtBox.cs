@@ -77,7 +77,6 @@ public class SpaceHurtBox : MonoBehaviour
 
     public void ResetSpaceHurtBox()
     {
-        Debug.Log("ResetSpaceHurtBox: " + gameObject.transform.parent.name);
         indicatorSr.color = safeColor;
         _currentTime = 0f;
         _hasWarned = false;

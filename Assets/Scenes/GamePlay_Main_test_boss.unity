@@ -2460,8 +2460,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1304632867}
   - {fileID: 1258097550}
+  - {fileID: 1304632867}
   - {fileID: 899774125}
   m_Father: {fileID: 1207092394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3590,7 +3590,6 @@ GameObject:
   - component: {fileID: 1270922501523532901}
   - component: {fileID: 7315166584989365160}
   - component: {fileID: 7315166584989365161}
-  - component: {fileID: 6865226711689461197}
   - component: {fileID: 860943584660175649}
   m_Layer: 6
   m_Name: Enemy Boss
@@ -4099,24 +4098,6 @@ Transform:
   - {fileID: 3959389108527812709}
   m_Father: {fileID: 1270922501523532901}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6865226711689461197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041487026604758372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4eac5b8d0a1ff4bb69d4241ee3f13f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StateMachine
-  ownerChaacter: {fileID: 7315166584989365161}
-  dataStateMachines:
-  - nameStateCondition: Random Attack Time
-    state: {fileID: 11400000, guid: 2d125253a5735f8409a0dbcf6e18562f, type: 2}
-    condition: {fileID: 11400000, guid: 1b381856538c41147b30a16323955d07, type: 2}
-  activeState: {fileID: 0}
 --- !u!212 &7315166584989365160
 SpriteRenderer:
   serializedVersion: 2
@@ -4192,9 +4173,31 @@ MonoBehaviour:
   characterMovement: {fileID: 1149147057428015241}
   characterAttack: {fileID: 4971703257450523726}
   characterHealth: {fileID: 3118940889216247602}
-  maxAttackBar: 0
+  maxAttackBar: 100
   currentAttackBar: 0
-  rateAttackBar: 0
+  rateAttackBar: 27.45
+  availableAttacks:
+  - attackType: 0
+    weight: 10
+    cooldown: 5
+    repeatAttack: 3
+    delayBetweenRepeats: 0.5
+    postAttackDelay: 1
+    lastUsedTime: 0
+  - attackType: 1
+    weight: 10
+    cooldown: 10
+    repeatAttack: 1
+    delayBetweenRepeats: 0.5
+    postAttackDelay: 1
+    lastUsedTime: 0
+  - attackType: 2
+    weight: 5
+    cooldown: 3
+    repeatAttack: 0
+    delayBetweenRepeats: 0.5
+    postAttackDelay: 1
+    lastUsedTime: 0
 --- !u!224 &7575220436320051804
 RectTransform:
   m_ObjectHideFlags: 0

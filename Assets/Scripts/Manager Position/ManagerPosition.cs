@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ManagerPosition : MonoBehaviour
 {
@@ -40,14 +41,28 @@ public class ManagerPosition : MonoBehaviour
         {
             if (attackPoint.PointDirection == point.PointDirection)
             {
-                attackPoint.ActivateHitBox();
+                point.ActivateHitBox(); // activate the manager's own lane point, not the passed-in reference
                 foundMatch = true;
             }
         }
 
         if (!foundMatch)
-            Debug.LogWarning($"No point found matching direction {attackPoint.PointDirection}! Check PointDirection values in pointMovements list.");
+            Debug.LogWarning($"No point found matching direction {attackPoint.PointDirection}!");
     }
     
-    public Transform GetCurrentPlayer() => currPointPlayer.transform;
+    public List<PointMovement> GetMultiplePointMovements()
+    {
+        List<PointMovement> result = new();
+
+        PointMovement centerPoint = pointMovements.FirstOrDefault(p => p.PointDirection == PointDirection.Center);
+        if (centerPoint != null)
+            result.Add(centerPoint);
+
+        PointDirection sideDirection = Random.value < 0.5f ? PointDirection.Left : PointDirection.Right;
+        PointMovement sidePoint = pointMovements.FirstOrDefault(p => p.PointDirection == sideDirection);
+        if (sidePoint != null)
+            result.Add(sidePoint);
+
+        return result;
+    }
 }

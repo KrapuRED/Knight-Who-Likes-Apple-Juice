@@ -4,9 +4,9 @@ using UnityEngine;
 public class EnemyCharacter : Character, IDamageable
 {
     [Header("Attack bar Config")]
-    [SerializeField] private float maxAttackBar;
-    [SerializeField] private float currentAttackBar;
-    [SerializeField] private float rateAttackBar;
+    [SerializeField] protected float maxAttackBar;
+    [SerializeField] protected float currentAttackBar;
+    [SerializeField] protected float rateAttackBar;
 
     private void Update()
     {
