@@ -16,8 +16,8 @@ public class PointMovement : MonoBehaviour
     
     [SerializeField] private SpaceHurtBox spaceHurtBox;
     
-    public void ActivateHitBox()
+    public void ActivateHitBox(Character ownerCharacter, float damage)
     {
-        spaceHurtBox.ResetSpaceHurtBox();
+        spaceHurtBox.ActivateHitBox(ownerCharacter, damage);
     }
 }

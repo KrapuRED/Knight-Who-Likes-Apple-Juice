@@ -31,7 +31,8 @@ public class CharacterHealth : MonoBehaviour
 
     public void UpdateHealthRestore(float amount)
     {
-        Debug.Log($"{gameObject.name} is restored {amount}");
+        owenrCharacter.CharacterAnimation.HealAnimation();
+        
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
         healthBarUI.UpdateStatusBar(currentHealth, maxHealth);

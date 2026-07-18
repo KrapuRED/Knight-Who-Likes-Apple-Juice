@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterAttack : MonoBehaviour
 {
+    [SerializeField] private Character ownerCharacter;
     [SerializeField] private EnemyCharacter enemyCharacter;
     [SerializeField] private float damage;
     [SerializeField] private Transform target;
@@ -14,6 +15,8 @@ public class CharacterAttack : MonoBehaviour
         
         if (!StatusManager.Instance.UseAttackBar())
             return;
+        
+        ownerCharacter.CharacterAnimation.AttackAnimation();
         
         VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);    
     }
@@ -27,18 +30,19 @@ public class CharacterAttack : MonoBehaviour
         }
         
         Debug.Log($"Attack pos {currentPoint.gameObject.name}");
-        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint);
+        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint, enemyCharacter, enemyCharacter.DamageValue);
         enemyCharacter.ResetCondition();
     }
     
-    public void OnAttackMultipleByState(PointMovement[] currentPoints)
+    public void OnAttackMultipleByState()
     {
         if (enemyCharacter != null && !enemyCharacter.IsAttackBarFull())
         {
             return;
         }
         
-        
+        foreach (PointMovement point in ManagerPosition.Instance.GetMultiplePointMovements())
+            ManagerPosition.Instance.DropHitBoxByPoint(point, enemyCharacter, enemyCharacter.DamageValue);
         
         enemyCharacter.ResetCondition();
     }

@@ -33,7 +33,7 @@ public class ManagerPosition : MonoBehaviour
         return pointMovements[randomIndex];
     }
 
-    public void DropHitBoxByPoint(PointMovement attackPoint)
+    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage)
     {
         bool foundMatch = false;
 
@@ -41,7 +41,7 @@ public class ManagerPosition : MonoBehaviour
         {
             if (attackPoint.PointDirection == point.PointDirection)
             {
-                point.ActivateHitBox(); // activate the manager's own lane point, not the passed-in reference
+                point.ActivateHitBox(ownerCharacter, damage);
                 foundMatch = true;
             }
         }

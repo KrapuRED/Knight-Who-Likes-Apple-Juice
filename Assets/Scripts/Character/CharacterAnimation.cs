@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour
@@ -12,6 +13,7 @@ public class CharacterAnimation : MonoBehaviour
     [SerializeField] private Sprite dodgeSprites;
     [SerializeField] private Sprite healSprites;
     [SerializeField] private Sprite attackSprites;
+    [SerializeField] private Sprite anticipationSprite;
 
 
     public void IdleAnimation()
@@ -24,6 +26,8 @@ public class CharacterAnimation : MonoBehaviour
     
     public void DodgeAnimation(PointDirection direction)
     {
+        Debug.Log($"{gameObject.name}: Dodge animation called {direction}");
+        
         if (direction == PointDirection.Left)
             spriteRenderer.flipX = true;
         else
@@ -33,5 +37,38 @@ public class CharacterAnimation : MonoBehaviour
         
         bobEffect.StopBobbing();
         spriteRenderer.sprite = dodgeSprites;
+    }
+
+    public void AttackAnimation()
+    {
+        StartCoroutine(DelayIdleAnimation());
+        bobEffect.StopBobbing();
+        spriteRenderer.sprite = attackSprites;
+    }
+    
+    public void HealAnimation()
+    {
+        StartCoroutine(DelayIdleAnimation());
+        
+        bobEffect.StopBobbing();
+        spriteRenderer.sprite = healSprites;
+    }
+
+    public void AnticipationAnimation()
+    {
+        StartCoroutine(DelayAttackAnimation());
+        bobEffect.StopBobbing();
+    }
+    
+    IEnumerator DelayIdleAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        IdleAnimation();
+    }
+    
+    IEnumerator DelayAttackAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        AttackAnimation();
     }
 }

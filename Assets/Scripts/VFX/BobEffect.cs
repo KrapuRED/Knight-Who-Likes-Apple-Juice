@@ -6,12 +6,12 @@ public class BobEffect : MonoBehaviour
     [SerializeField] private float bobHeight = 0.2f;
     [SerializeField] private float bobSpeed = 2f;
 
-    private Vector3 _startLocalPos;
+    private Vector3 _startPos;
     [SerializeField] private bool _isBobbing = true;
 
     private void Start()
     {
-        _startLocalPos = parent.localPosition;
+        _startPos = parent.position;
     }
 
     private void Update()
@@ -19,19 +19,19 @@ public class BobEffect : MonoBehaviour
         if (!_isBobbing)
             return;
 
-        Debug.Log($"Bob position: {_startLocalPos}");
         float offset = Mathf.Sin(Time.time * bobSpeed) * bobHeight;
-        parent.localPosition = _startLocalPos + new Vector3(0f, offset, 0f);
+        parent.position = _startPos + new Vector3(0f, offset, 0f);
     }
 
     public void StopBobbing()
     {
         _isBobbing = false;
-        parent.localPosition = _startLocalPos; // snap back to rest position, avoid freezing mid-bob
+        _startPos = parent.position; // capture current position as the new rest point
     }
 
     public void ResumeBobbing()
     {
+        _startPos = parent.position; // re-anchor to wherever the character actually is now
         _isBobbing = true;
     }
 }

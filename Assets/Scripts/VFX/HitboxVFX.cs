@@ -73,7 +73,6 @@ public class HitboxVFX : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(_damageAmount);
-            Debug.Log($"Hit {other.gameObject.name} for {_damageAmount}");
         }
     }
 }

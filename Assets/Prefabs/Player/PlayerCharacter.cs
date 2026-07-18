@@ -36,8 +36,7 @@ public class PlayerCharacter : Character, IDamageable
     {
         if (isImmune)
             return;
-        
-        Debug.Log($"{gameObject.name} is taking damage {damageValue}");
+
         CharacterHealth.UpdateHealthTakeDamage(damageValue);
     }
 }

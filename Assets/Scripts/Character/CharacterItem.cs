@@ -13,7 +13,6 @@ public class CharacterItem : MonoBehaviour
             {
                 ItemSO itemData = ItemManager.Instance.ItemDataSo;
                 
-                Debug.Log($"Using {itemData.itemName} that healing {itemData.itemEffect}%");
                 owenCharacter.CharacterHealth.UpdateHealthRestore(itemData.itemEffect);
             }
         }

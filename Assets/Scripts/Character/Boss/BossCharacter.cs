@@ -26,7 +26,7 @@ public class BossAttackData
 
 public class BossCharacter : EnemyCharacter
 {
-    [Header("Boss Attacks")]
+    [Header("Boss Attacks")] 
     [SerializeField] private List<BossAttackData> availableAttacks = new();
 
     private bool _isAttacking;
@@ -110,11 +110,11 @@ public class BossCharacter : EnemyCharacter
         switch (type)
         {
             case BossAttackType.StaffAttack:
-                AttackAllLanes();
+                AttackSingleLane();
                 break;
 
             case BossAttackType.ClawAttack:
-                AttackSingleLane();
+                AttackAllLanes();
                 break;
 
             case BossAttackType.ShadowDodge:
@@ -126,19 +126,18 @@ public class BossCharacter : EnemyCharacter
     private void AttackSingleLane()
     {
         PointMovement target = ManagerPosition.Instance.CurrentPlayer;
-        ManagerPosition.Instance.DropHitBoxByPoint(target);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue);
     }
 
     private void AttackAllLanes()
     {
-        foreach (PointMovement point in ManagerPosition.Instance.GetMultiplePointMovements())
-            ManagerPosition.Instance.DropHitBoxByPoint(point);
+        CharacterAttack.OnAttackMultipleByState();
     }
 
     private void AttackRandomBarrage()
     {
         PointMovement target = ManagerPosition.Instance.GetRandomPoint();
-        ManagerPosition.Instance.DropHitBoxByPoint(target);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue);
     }
 
     public void OnDodgeAttack()

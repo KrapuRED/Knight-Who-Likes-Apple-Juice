@@ -10,8 +10,9 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform pointContainer;
     [SerializeField] private List<PointMovement> points = new();
-
-    [SerializeField] private PointMovement _currentPoint;
+    [SerializeField] private float minDodgeVisibleTime = 0.15f;
+    
+    private PointMovement _currentPoint;
     private Coroutine _moveRoutine;
     
     private void Awake()
@@ -46,7 +47,6 @@ public class CharacterMovement : MonoBehaviour
         }
         
         PointDirection direction = dir.x > 0 ? PointDirection.Right: PointDirection.Left;
-        ownerCharacter.CharacterAnimation.DodgeAnimation(direction);
         MoveToDirection(direction);
     }
     
@@ -81,16 +81,28 @@ public class CharacterMovement : MonoBehaviour
 
     private IEnumerator MoveAlongPath(PointMovement target, PointDirection direction)
     {
+        ownerCharacter.CharacterAnimation.DodgeAnimation(direction);
+
+        float elapsed = 0f;
+
         while (Vector3.Distance(transform.position, target.transform.position) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
         transform.position = target.transform.position;
+
+        // Ensure the dodge sprite is visible for at least minDodgeVisibleTime,
+        // even if the actual position-move finished faster than that.
+        if (elapsed < minDodgeVisibleTime)
+            yield return new WaitForSeconds(minDodgeVisibleTime - elapsed);
+
+        ownerCharacter.CharacterAnimation.IdleAnimation();
         ManagerPosition.Instance.UpdateCurrentPlayerPosition(target);
-        
-        _moveRoutine = null; 
+
+        _moveRoutine = null;
     }
     
     public void OnMovementInput(InputAction.CallbackContext context)

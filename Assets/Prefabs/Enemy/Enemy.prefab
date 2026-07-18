@@ -112,9 +112,11 @@ MonoBehaviour:
   characterMovement: {fileID: 2223937945024414244}
   characterAttack: {fileID: 6183615097930401507}
   characterHealth: {fileID: 4208368492748148127}
+  characterAnimation: {fileID: 3518827165182515231}
   maxAttackBar: 100
   currentAttackBar: 0
   rateAttackBar: 23.8
+  damageValue: 10
 --- !u!114 &5650253624645392224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ MonoBehaviour:
   moveSpeed: 5
   pointContainer: {fileID: 0}
   points: []
-  _currentPoint: {fileID: 0}
+  minDodgeVisibleTime: 0.15
 --- !u!1 &5148345164284614604
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +403,7 @@ Transform:
   - {fileID: 3109603156169725299}
   - {fileID: 6564736124989116711}
   - {fileID: 2872460403974486728}
+  - {fileID: 2733972038910226074}
   m_Father: {fileID: 39597426142840520}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5289422148527230762
@@ -447,9 +450,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a05979b566a57c48b13f4544a77f821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
+  ownerCharacter: {fileID: 0}
   enemyCharacter: {fileID: 2991143034619173504}
   damage: 10
   target: {fileID: 0}
+--- !u!1 &6007174894054090113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2733972038910226074}
+  - component: {fileID: 3518827165182515231}
+  m_Layer: 6
+  m_Name: Enemy System - Animation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2733972038910226074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007174894054090113}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4340842298769117354}
+  m_Father: {fileID: 5755079954032174087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3518827165182515231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007174894054090113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960b860b6ef23d74394f3ddb67d24a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 8406854559947217157}
+  bobEffect: {fileID: 3613087997950377102}
+  idleSprites: {fileID: 1267190137828850596, guid: 580e08418b76d584995cd108c51dda09, type: 3}
+  dodgeSprites: {fileID: -2324581656518771834, guid: c07cb9ea5597fd847babf80ab1b30a08, type: 3}
+  healSprites: {fileID: 0}
+  attackSprites: {fileID: 4821426283748699070, guid: a13c4e26348177d4a855b821fbe57325, type: 3}
+  anticipationSprite: {fileID: -2324581656518771834, guid: c07cb9ea5597fd847babf80ab1b30a08, type: 3}
+--- !u!1 &7730064210660834173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4340842298769117354}
+  - component: {fileID: 3613087997950377102}
+  m_Layer: 6
+  m_Name: Animation - Bob Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4340842298769117354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730064210660834173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2733972038910226074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3613087997950377102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730064210660834173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f2be348265d841bd810641b19f034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BobEffect
+  parent: {fileID: 39597426142840520}
+  bobHeight: 0.2
+  bobSpeed: 2
+  _isBobbing: 1
 --- !u!1001 &8650975703670524034
 PrefabInstance:
   m_ObjectHideFlags: 0

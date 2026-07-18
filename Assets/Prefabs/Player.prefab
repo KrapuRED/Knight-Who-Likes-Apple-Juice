@@ -59,7 +59,6 @@ GameObject:
   - component: {fileID: 3491721977933163907}
   - component: {fileID: 3514671914806557487}
   - component: {fileID: 8430664395810503391}
-  - component: {fileID: 7406391840395747746}
   - component: {fileID: 3517012794490605167}
   - component: {fileID: 3072749825690833047}
   m_Layer: 7
@@ -102,6 +101,7 @@ MonoBehaviour:
   characterMovement: {fileID: 0}
   characterAttack: {fileID: 555509681780828420}
   characterHealth: {fileID: 8230733977185970016}
+  characterAnimation: {fileID: 7945696193790552221}
   dodgeCost: 20
   durationImmune: 0.3
   isImmune: 0
@@ -121,29 +121,7 @@ MonoBehaviour:
   moveSpeed: 125
   pointContainer: {fileID: 0}
   points: []
-  _currentPoint: {fileID: 0}
---- !u!95 &7406391840395747746
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3067490628571853489}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2e96fcde9d65af1458445e068b19d6ae, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  minDodgeVisibleTime: 0.15
 --- !u!70 &3517012794490605167
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -269,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 4230819638438735202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.51, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -378,9 +356,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a05979b566a57c48b13f4544a77f821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
+  ownerCharacter: {fileID: 3514671914806557487}
   enemyCharacter: {fileID: 0}
   damage: 10
   target: {fileID: 0}
+--- !u!1 &5669762282410559259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6572200476695307704}
+  - component: {fileID: 62022048504873510}
+  m_Layer: 7
+  m_Name: Animation - Bob Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6572200476695307704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669762282410559259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 692003821770944016}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &62022048504873510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669762282410559259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824f2be348265d841bd810641b19f034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BobEffect
+  parent: {fileID: 3491721977933163907}
+  bobHeight: 0.2
+  bobSpeed: 2
+  _isBobbing: 1
 --- !u!1 &6644552660653127455
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692003821770944016}
+  - component: {fileID: 7945696193790552221}
   m_Layer: 7
   m_Name: Player System - Animation
   m_TagString: Untagged
@@ -409,9 +437,29 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6572200476695307704}
   m_Father: {fileID: 7821023811710900610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7945696193790552221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644552660653127455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960b860b6ef23d74394f3ddb67d24a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 2473313740395272363}
+  bobEffect: {fileID: 62022048504873510}
+  idleSprites: {fileID: 7408791951343775973, guid: 20fee7ba41bfcce4dbe6d8538cb801fd, type: 3}
+  dodgeSprites: {fileID: 1176979436120187810, guid: 9bcaa09fc9ce34c4e83edb5f90cc5698, type: 3}
+  healSprites: {fileID: -7776838604706296343, guid: 20c2c5b6ee41ab8428add3b716410d51, type: 3}
+  attackSprites: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
 --- !u!1 &7717776232075447406
 GameObject:
   m_ObjectHideFlags: 0

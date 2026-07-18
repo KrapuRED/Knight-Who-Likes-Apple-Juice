@@ -7,7 +7,10 @@ public class EnemyCharacter : Character, IDamageable
     [SerializeField] protected float maxAttackBar;
     [SerializeField] protected float currentAttackBar;
     [SerializeField] protected float rateAttackBar;
+    [SerializeField] protected float damageValue;
 
+    public float DamageValue => damageValue;
+    
     private void Update()
     {
         if (currentAttackBar >= maxAttackBar)
@@ -16,10 +19,9 @@ public class EnemyCharacter : Character, IDamageable
         currentAttackBar += Time.deltaTime * rateAttackBar;
     }
 
-    public void TakeDamage(float damageValue)
+    public void TakeDamage(float amountDamage)
     {
-        Debug.Log($"{gameObject.name} is taking damage {damageValue}");
-        CharacterHealth.UpdateHealthTakeDamage(damageValue);
+        CharacterHealth.UpdateHealthTakeDamage(amountDamage);
     }
 
     public void ResetCondition() => currentAttackBar = 0;
