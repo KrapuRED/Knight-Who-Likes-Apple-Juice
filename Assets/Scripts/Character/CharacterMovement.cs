@@ -39,7 +39,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnMove(Vector2 dir)
     {
+        if (dir.x == 0)
+        {
+            ownerCharacter.CharacterAnimation.IdleAnimation();
+            return;
+        }
+        
         PointDirection direction = dir.x > 0 ? PointDirection.Right: PointDirection.Left;
+        ownerCharacter.CharacterAnimation.DodgeAnimation(direction);
         MoveToDirection(direction);
     }
     
@@ -56,7 +63,11 @@ public class CharacterMovement : MonoBehaviour
         
         PointMovement nextPoint = points.FirstOrDefault(p => (int)p.PointDirection == nextIndex);
     
-        if (nextPoint == null) return;
+        if (nextPoint == null) 
+        {
+            ownerCharacter.CharacterAnimation.IdleAnimation();
+            return;
+        }
 
         _currentPoint = nextPoint;
 

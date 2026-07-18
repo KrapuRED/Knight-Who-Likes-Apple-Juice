@@ -67,7 +67,6 @@ public class HitboxVFX : MonoBehaviour
         
         if (character.CharacterType == _characterType)
         {
-            Debug.Log($"Hit {other.gameObject.name} is same with owner {_characterType}");
             return;
         }
         
