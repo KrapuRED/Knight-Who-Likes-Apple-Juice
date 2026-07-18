@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerCharacter ownerCharacter;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform pointContainer;
     [SerializeField] private List<PointMovement> points = new();
@@ -15,19 +16,25 @@ public class CharacterMovement : MonoBehaviour
     
     private void Awake()
     {
+        if (pointContainer == null)
+        {
+            Debug.LogWarning($"{gameObject.name} needs a point container");
+            return;
+        }
+        
         for (int i = 0; i < pointContainer.childCount; i++)
             points.Add(pointContainer.GetChild(i).GetComponent<PointMovement>());
     }
 
     private void Start()
     {
+        if (points.Count <= 0) return;
+        
         foreach (PointMovement point in points)
             if (point.PointDirection == PointDirection.Center)
                 _currentPoint = point;
         
         transform.position = _currentPoint.transform.position;
-        
-        Debug.Log($"{gameObject.name} is moving to the {_currentPoint.PointDirection}");
     }
 
     private void OnMove(Vector2 dir)
@@ -50,7 +57,6 @@ public class CharacterMovement : MonoBehaviour
         PointMovement nextPoint = points.FirstOrDefault(p => (int)p.PointDirection == nextIndex);
     
         if (nextPoint == null) return;
-        Debug.Log($"{gameObject.name} next stop at {nextPoint}");
 
         _currentPoint = nextPoint;
 
@@ -72,7 +78,6 @@ public class CharacterMovement : MonoBehaviour
         }
 
         transform.position = target.transform.position;
-        Debug.Log($"{gameObject.name} arrived at {target.PointDirection}");
             
         _moveRoutine = null; 
     }
@@ -83,6 +88,7 @@ public class CharacterMovement : MonoBehaviour
         
         if (context.performed)
         {
+            ownerCharacter.OnDodge();
             OnMove(dir);
         }
     }
