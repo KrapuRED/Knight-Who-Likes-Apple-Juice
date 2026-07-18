@@ -13,9 +13,15 @@ public class Character : MonoBehaviour
     
     private void Awake()
     {
-        characterMovement = GetComponent<CharacterMovement>();
-        characterAttack   = GetComponent<CharacterAttack>();
-        characterHealth   = GetComponent<CharacterHealth>();
+        if (characterHealth == null)
+            characterHealth = GetComponent<CharacterHealth>();
+        
+        if (characterAttack == null)
+            characterAttack = GetComponent<CharacterAttack>();
+    
+        if (characterMovement == null)
+            characterMovement = GetComponent<CharacterMovement>();
+            
     }
     
     public void OnDeadCharacter()

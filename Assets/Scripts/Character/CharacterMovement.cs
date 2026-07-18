@@ -77,7 +77,8 @@ public class CharacterMovement : MonoBehaviour
         }
 
         transform.position = target.transform.position;
-            
+        ManagerPosition.Instance.UpdateCurrentPlayerPosition(target);
+        
         _moveRoutine = null; 
     }
     

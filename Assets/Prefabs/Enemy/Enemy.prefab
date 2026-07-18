@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 39597426142840520}
   - component: {fileID: 8406854559947217157}
   - component: {fileID: 2991143034619173504}
-  - component: {fileID: 3456452381884277546}
-  - component: {fileID: 7608904550718787017}
   - component: {fileID: 1935768624527430028}
-  - component: {fileID: 8929796554079339542}
+  - component: {fileID: 5650253624645392224}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -36,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5273357371391173108}
+  - {fileID: 5755079954032174087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8406854559947217157
@@ -109,40 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6838313387ff17e46b0b1b41d6e597d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
-  characterMovement: {fileID: 0}
-  characterAttack: {fileID: 0}
-  characterHealth: {fileID: 0}
---- !u!114 &3456452381884277546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259555772565012425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a1fe4704b1701d4f99d8f350f905c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
-  ownerCharacter: {fileID: 0}
-  moveSpeed: 5
-  pointContainer: {fileID: 0}
-  points: []
-  _currentPoint: {fileID: 0}
---- !u!114 &7608904550718787017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259555772565012425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a05979b566a57c48b13f4544a77f821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
-  damage: 0
-  target: {fileID: 0}
+  characterMovement: {fileID: 2223937945024414244}
+  characterAttack: {fileID: 6183615097930401507}
+  characterHealth: {fileID: 4208368492748148127}
 --- !u!70 &1935768624527430028
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +148,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &8929796554079339542
+--- !u!114 &5650253624645392224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,13 +157,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259555772565012425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a992c51bb27a55949b3a12697007e322, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a4eac5b8d0a1ff4bb69d4241ee3f13f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
-  owenrCharacter: {fileID: 2991143034619173504}
-  maxHealth: 100
-  currentHealth: 0
-  healthBarUI: {fileID: 1114847898055625574}
+  m_EditorClassIdentifier: Assembly-CSharp::StateMachine
+  dataStateMachines:
+  - nameStateCondition: Random Attack Time
+    state: {fileID: 11400000, guid: 0925d3c132cc8e747a14be7de25e2f2e, type: 2}
+    condition: {fileID: 11400000, guid: 1b381856538c41147b30a16323955d07, type: 2}
+  activeState: {fileID: 0}
 --- !u!1 &2633043523983861782
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +267,183 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4227288832350291612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3109603156169725299}
+  - component: {fileID: 4208368492748148127}
+  m_Layer: 6
+  m_Name: Enemy System - Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3109603156169725299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227288832350291612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5755079954032174087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4208368492748148127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227288832350291612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a992c51bb27a55949b3a12697007e322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
+  owenrCharacter: {fileID: 2991143034619173504}
+  maxHealth: 100
+  currentHealth: 0
+  healthBarUI: {fileID: 1114847898055625574}
+--- !u!1 &4331651577172002464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6564736124989116711}
+  - component: {fileID: 2223937945024414244}
+  m_Layer: 6
+  m_Name: Enemy System - Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6564736124989116711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331651577172002464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5755079954032174087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2223937945024414244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331651577172002464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1fe4704b1701d4f99d8f350f905c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  ownerCharacter: {fileID: 0}
+  moveSpeed: 5
+  pointContainer: {fileID: 0}
+  points: []
+  _currentPoint: {fileID: 0}
+--- !u!1 &5148345164284614604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5755079954032174087}
+  m_Layer: 6
+  m_Name: === ENEMY SYSTEM ===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5755079954032174087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5148345164284614604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3109603156169725299}
+  - {fileID: 6564736124989116711}
+  - {fileID: 2872460403974486728}
+  m_Father: {fileID: 39597426142840520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5289422148527230762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2872460403974486728}
+  - component: {fileID: 6183615097930401507}
+  m_Layer: 6
+  m_Name: Enemy System - Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2872460403974486728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289422148527230762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5755079954032174087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6183615097930401507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289422148527230762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05979b566a57c48b13f4544a77f821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
+  damage: 0
+  target: {fileID: 0}
 --- !u!1001 &245134935006669733
 PrefabInstance:
   m_ObjectHideFlags: 0
