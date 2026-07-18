@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 39597426142840520}
   - component: {fileID: 8406854559947217157}
   - component: {fileID: 2991143034619173504}
-  - component: {fileID: 1935768624527430028}
   - component: {fileID: 5650253624645392224}
+  - component: {fileID: 1935768624527430028}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -112,6 +112,24 @@ MonoBehaviour:
   characterMovement: {fileID: 2223937945024414244}
   characterAttack: {fileID: 6183615097930401507}
   characterHealth: {fileID: 4208368492748148127}
+--- !u!114 &5650253624645392224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259555772565012425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4eac5b8d0a1ff4bb69d4241ee3f13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StateMachine
+  ownerChaacter: {fileID: 2991143034619173504}
+  dataStateMachines:
+  - nameStateCondition: Random Attack Time
+    state: {fileID: 11400000, guid: 0925d3c132cc8e747a14be7de25e2f2e, type: 2}
+    condition: {fileID: 11400000, guid: 1b381856538c41147b30a16323955d07, type: 2}
+  activeState: {fileID: 0}
 --- !u!70 &1935768624527430028
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,24 +167,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &5650253624645392224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259555772565012425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4eac5b8d0a1ff4bb69d4241ee3f13f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StateMachine
-  ownerChaacter: {fileID: 2991143034619173504}
-  dataStateMachines:
-  - nameStateCondition: Random Attack Time
-    state: {fileID: 11400000, guid: 0925d3c132cc8e747a14be7de25e2f2e, type: 2}
-    condition: {fileID: 11400000, guid: 1b381856538c41147b30a16323955d07, type: 2}
-  activeState: {fileID: 0}
 --- !u!1 &2633043523983861782
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a05979b566a57c48b13f4544a77f821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
-  ownerCharacter: {fileID: 2991143034619173504}
   damage: 0
   target: {fileID: 0}
 --- !u!1001 &245134935006669733

@@ -8,6 +8,8 @@ public class ManagerPosition : MonoBehaviour
     [SerializeField] private PointMovement currPointPlayer;
     [SerializeField] private List<PointMovement> pointMovements = new();
     
+    public PointMovement CurrentPlayer => currPointPlayer;
+    
     private void Awake()
     {
         if (Instance == null)

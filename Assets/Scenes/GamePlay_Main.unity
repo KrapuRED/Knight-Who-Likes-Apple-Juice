@@ -1401,17 +1401,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2259555772565012425, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7608904550718787017, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 319309513}
     - target: {fileID: 8651135832188324081, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8651135832188324081, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8929796554079339542, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: owenrCharacter
@@ -1822,17 +1826,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2259555772565012425, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7608904550718787017, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 319309513}
     - target: {fileID: 8651135832188324081, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8651135832188324081, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8929796554079339542, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: owenrCharacter
@@ -2540,6 +2548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5650253624645392224, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
+      propertyPath: dataStateMachines.Array.data[0].state
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d125253a5735f8409a0dbcf6e18562f, type: 2}
     - target: {fileID: 6183615097930401507, guid: 9e687821a4f5b1e4688130eaf822e383, type: 3}
       propertyPath: damage
       value: 10
