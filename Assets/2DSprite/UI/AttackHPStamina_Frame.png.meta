@@ -162,9 +162,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 161
-        height: 340
+        y: 0
+        width: 736
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,55 +179,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AttackHPStamina_Frame_1
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 1
-        width: 624
-        height: 148
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d717ea58b5c46ac60800000000000000
-      internalID: 7829028958198722941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AttackHPStamina_Frame_2
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 87
-        width: 496
-        height: 214
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6ccb0833aecb8fc0800000000000000
-      internalID: -3491469885680399254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 26fcf1bcfa087214bbcd89d0d78e3449
     internalID: 0
     vertices: []
     indices: 
