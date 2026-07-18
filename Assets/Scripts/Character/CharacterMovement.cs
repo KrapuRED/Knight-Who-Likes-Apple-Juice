@@ -16,9 +16,9 @@ public class CharacterMovement : MonoBehaviour
     
     private void Awake()
     {
-        if (pointContainer == null)
+        if (pointContainer == null && ownerCharacter == null)
         {
-            Debug.LogWarning($"{gameObject.name} needs a point container");
+            Debug.Log($"{gameObject.name} is missing needs a point container");
             return;
         }
         

@@ -19,7 +19,7 @@ public class SpaceHurtBox : MonoBehaviour
 
     private float _currentTime;
     private bool _hasWarned;
-    private bool _isSpent;
+    private bool _isSpent = true;
     
     private void Update()
     {

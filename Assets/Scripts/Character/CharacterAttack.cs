@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterAttack : MonoBehaviour
 {
+    [SerializeField] private EnemyCharacter enemyCharacter;
     [SerializeField] private float damage;
     [SerializeField] private Transform target;
 
@@ -20,7 +21,25 @@ public class CharacterAttack : MonoBehaviour
 
     public void OnAttackByState(PointMovement currentPoint)
     {
+        if (enemyCharacter != null && !enemyCharacter.IsAttackBarFull())
+        {
+            return;
+        }
+        
         Debug.Log($"Attack pos {currentPoint.gameObject.name}");
         ManagerPosition.Instance.DropHitBoxByPoint(currentPoint);
+        enemyCharacter.ResetCondition();
+    }
+    
+    public void OnAttackMultipleByState(PointMovement[] currentPoints)
+    {
+        if (enemyCharacter != null && !enemyCharacter.IsAttackBarFull())
+        {
+            return;
+        }
+        
+        
+        
+        enemyCharacter.ResetCondition();
     }
 }
