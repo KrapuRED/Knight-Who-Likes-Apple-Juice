@@ -2434,7 +2434,7 @@ Transform:
   m_GameObject: {fileID: 1407978695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3564,7 +3564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3491721977933163907, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 3491721977933163907, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3600,7 +3600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8230733977185970016, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8230733977185970016, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: healthBarUI
