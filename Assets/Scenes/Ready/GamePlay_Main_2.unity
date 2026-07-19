@@ -3473,6 +3473,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 102901980554371935, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: progressLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.69006
@@ -3593,6 +3597,10 @@ PrefabInstance:
     - target: {fileID: 3491721977933163907, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230733977185970016, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8230733977185970016, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: healthBarUI

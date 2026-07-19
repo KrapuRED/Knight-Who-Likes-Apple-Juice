@@ -91,8 +91,11 @@ public class GameManager : MonoBehaviour
         progressLevel = 1;
         
         PanelManager.Instance.ClosePanel("Panel - Failed");
+        activeEnemyCharacters.Clear();
         
         TransitionManager.Instance.LoadScene($"GamePlay_Story_Opening", "CrossFade");
+        MusicManager.Instance.PlayMusic("GamePlay_Story");
+        
     }
     
     public void FailGame()
