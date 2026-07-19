@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GamePlay_Story.unity
+    guid: 010f8be915045f54f8a3ef66a006d591
+  - enabled: 1
     path: Assets/Scenes/Ready/GamePlay_Main_1.unity
     guid: c9c90274499b6fd4eab212a179bfc8cb
   - enabled: 1
@@ -14,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ready/GamePlay_Main_3.unity
     guid: 99ebf78043d588344863103620d41e3e
+  - enabled: 1
+    path: Assets/Scenes/Credit.unity
+    guid: cb2a63bc9d3652f4dbd92f3b8a715530
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c65602c74eb1555438fd4742a37adb2c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e7ed604df03e1324e8d6d65be15b4473, type: 3}
