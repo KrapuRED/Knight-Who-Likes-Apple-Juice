@@ -55,11 +55,17 @@ public class GameManager : MonoBehaviour
     private void OnAllEnemiesDefeated()
     {
         Debug.Log("All enemies defeated — advancing to next level");
+
+        if (progressLevel >= maxProgressLevel)
+        {
+            TransitionManager.Instance.LoadScene("GamePlay_Story_Ending", "CrossFade");
+            MusicManager.Instance.PlayMusic("GamePlay_Story");
+            
+            return;
+        }
         
         progressLevel++;
-        TransitionManager.Instance.LoadScene($"GamePlay_Story_{progressLevel}", "CrossFade");
-        MusicManager.Instance.PlayMusic("GamePlay_Story");
-        
+        TransitionManager.Instance.LoadScene($"GamePlay_Main_{progressLevel}", "CrossFade");
     }
 
     public void ContinueToMainGamePlay()
@@ -82,9 +88,11 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        progressLevel = 1;
+        
         PanelManager.Instance.ClosePanel("Panel - Failed");
         
-        TransitionManager.Instance.LoadScene($"GamePlay_Main_{progressLevel}", "CrossFade");
+        TransitionManager.Instance.LoadScene($"GamePlay_Story_Opening", "CrossFade");
     }
     
     public void FailGame()

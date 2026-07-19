@@ -47,6 +47,7 @@ MonoBehaviour:
   owenrCharacter: {fileID: 3514671914806557487}
   maxHealth: 120
   currentHealth: 0
+  soundEffect: minion_hurt
   healthBarUI: {fileID: 0}
 --- !u!1 &3067490628571853489
 GameObject:
@@ -102,7 +103,9 @@ MonoBehaviour:
   characterAttack: {fileID: 555509681780828420}
   characterHealth: {fileID: 8230733977185970016}
   characterAnimation: {fileID: 7945696193790552221}
+  isAttackBarFull: 0
   _isHealing: 0
+  diedSoundEffect: 
   dodgeCost: 20
   durationImmune: 0.3
   isImmune: 0
@@ -454,7 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
   owner: {fileID: 3514671914806557487}
-  animator: {fileID: 0}
   spriteRenderer: {fileID: 2473313740395272363}
   bobEffect: {fileID: 62022048504873510}
   moveAttack: {fileID: 0}
@@ -465,10 +467,7 @@ MonoBehaviour:
   - attackId: 0
     anticipationSprite: {fileID: 0}
     attackSprite: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
-  attackSprites: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
-  anticipationSprite: {fileID: 0}
-  attackSecondSprites: {fileID: 0}
-  anticipationSecondSprite: {fileID: 0}
+    vfx: {fileID: 0}
   vfxAttack: {fileID: 0}
 --- !u!1 &7717776232075447406
 GameObject:

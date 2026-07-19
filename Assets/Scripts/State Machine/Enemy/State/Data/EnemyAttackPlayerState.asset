@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5b10af99135fa4db1b7a0496626ad0, type: 3}
   m_Name: EnemyAttackPlayerState
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttacPlayerState
-  minAttackTime: 5
-  maxAttackTime: 10
+  minAttackTime: 3
+  maxAttackTime: 5
   soundEffect: minion_attack

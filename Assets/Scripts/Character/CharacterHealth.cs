@@ -6,6 +6,7 @@ public class CharacterHealth : MonoBehaviour
     public Character owenrCharacter;
     public float maxHealth;
     public float currentHealth;
+    [SerializeField] private string soundEffect;
 
     [SerializeField] private HeallthStatusBarUI healthBarUI;
     
@@ -19,7 +20,8 @@ public class CharacterHealth : MonoBehaviour
     {
         currentHealth = Mathf.Min(currentHealth - amount, maxHealth);
     
-        SoundEffectManager.Instance.PlaySound2D("player_hurt");
+        if (!string.IsNullOrEmpty(soundEffect))
+            SoundEffectManager.Instance.PlaySound2D(soundEffect);
         
         if (currentHealth <= 0)
         {

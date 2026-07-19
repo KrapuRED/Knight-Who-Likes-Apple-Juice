@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6d2c36f90c661459f0977f2204bf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitboxVFX
-  lifetime: 1
+  lifetime: 0.5
   travelSpeed: 0
 --- !u!61 &4300152724423865165
 BoxCollider2D:

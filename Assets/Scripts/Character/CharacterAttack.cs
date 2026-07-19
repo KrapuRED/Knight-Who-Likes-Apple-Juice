@@ -22,6 +22,9 @@ public class CharacterAttack : MonoBehaviour
         if (ownerCharacter.IsHealing)
             return;
         
+        if (!GameManager.Instance.IsGameActive)
+            return;
+        
         SoundEffectManager.Instance.PlaySound2D("player_attack");
         ownerCharacter.CharacterAnimation.AttackAnimation(new[] { PointDirection.Center }, 0, string.Empty);
 

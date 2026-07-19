@@ -127,90 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 25408140737686314, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 25408140737686314, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 25408140737686314, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 25408140737686314, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619350600744660808, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[5].groupID
-      value: minion_die
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[6].groupID
-      value: player_attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[7].groupID
-      value: player_dodge
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[8].groupID
-      value: player_heal
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[9].groupID
-      value: player_hurt
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[10].groupID
-      value: player_die
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[11].groupID
-      value: player_die
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[5].clips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: soundEffects.Array.data[11].clips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[5].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 20845e08dacbae94c8f14fe410cc85a9, type: 3}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[6].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 6432541ba76c298448165ad4b3c8968a, type: 3}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[7].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 72c015bd1f21a1842ab3f5f877b1a8ba, type: 3}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[8].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: e9e72859739a03a4382478f73b661453, type: 3}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[9].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 03eb5f1eec82b8a4196235eb38c09815, type: 3}
-    - target: {fileID: 1899204547938860231, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: 'soundEffects.Array.data[11].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 03eb5f1eec82b8a4196235eb38c09815, type: 3}
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.82322
@@ -251,33 +167,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4819827202584465531, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5551203512914110090, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_Name
       value: 'DDOL - Game Manager '
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610436310516175239, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9036490014378577778, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9036490014378577778, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9036490014378577778, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9036490014378577778, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
