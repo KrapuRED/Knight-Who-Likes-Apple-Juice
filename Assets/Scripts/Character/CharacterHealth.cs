@@ -19,6 +19,8 @@ public class CharacterHealth : MonoBehaviour
     {
         currentHealth = Mathf.Min(currentHealth - amount, maxHealth);
     
+        SoundEffectManager.Instance.PlaySound2D("player_hurt");
+        
         if (currentHealth <= 0)
         {
             Debug.Log($"{gameObject.name} is dead");

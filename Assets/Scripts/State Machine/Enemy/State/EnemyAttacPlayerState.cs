@@ -19,6 +19,12 @@ public class EnemyAttacPlayerState : StateSO
     {
         _currTime += Time.deltaTime;
 
+        if (!character.IsAttackBarFull)
+        {
+            _currTime = 0f;
+            return;
+        }
+        
         if (_currTime >= _targetTime)
         {
             var point = ManagerPosition.Instance.CurrentPlayer;

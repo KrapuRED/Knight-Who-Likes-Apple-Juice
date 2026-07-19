@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Character> activeEnemyCharacters = new(); 
     [SerializeField] private bool _isGameActive;
 
+    public bool IsGameActive => _isGameActive;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -26,8 +28,12 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
+    }
+
+    private void Start()
+    {
+        MusicManager.Instance.PlayMusic("GamePlay_Story");
     }
 
     public void AddCharacter(Character character)
@@ -49,25 +55,29 @@ public class GameManager : MonoBehaviour
     private void OnAllEnemiesDefeated()
     {
         Debug.Log("All enemies defeated — advancing to next level");
-
-        if (progressLevel >= maxProgressLevel)
-        {
-            EndGame(); // reached the final level, game complete
-            return;
-        }
-
+        
         progressLevel++;
+        TransitionManager.Instance.LoadScene($"GamePlay_Story_{progressLevel}", "CrossFade");
+        MusicManager.Instance.PlayMusic("GamePlay_Story");
+        
+    }
+
+    public void ContinueToMainGamePlay()
+    {
         TransitionManager.Instance.LoadScene($"GamePlay_Main_{progressLevel}", "CrossFade");
+        MusicManager.Instance.PlayMusic("GamePlay_Main");
     }
     
     public void StartGame()
     {
+        PanelManager.Instance.ClosePanel("Panel - Tutorial");
         
+        _isGameActive = true;
     }
 
     public void EndGame()
     {
-        
+        TransitionManager.Instance.LoadScene($"Credit", "CrossFade");
     }
 
     public void RestartGame()

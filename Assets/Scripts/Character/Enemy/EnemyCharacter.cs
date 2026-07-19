@@ -18,6 +18,9 @@ public class EnemyCharacter : Character, IDamageable
 
     private void Update()
     {
+        if (!GameManager.Instance.IsGameActive)
+            return;
+        
         currentAttackBar += Time.deltaTime * rateAttackBar;
     
         // Kunci nilainya agar wajib berada di antara 0 dan maxAttackBar

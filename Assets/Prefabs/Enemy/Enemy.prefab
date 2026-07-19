@@ -114,7 +114,9 @@ MonoBehaviour:
   characterAttack: {fileID: 6183615097930401507}
   characterHealth: {fileID: 4208368492748148127}
   characterAnimation: {fileID: 3518827165182515231}
+  isAttackBarFull: 0
   _isHealing: 0
+  diedSoundEffect: minion_die
   maxAttackBar: 100
   currentAttackBar: 0
   rateAttackBar: 23.8

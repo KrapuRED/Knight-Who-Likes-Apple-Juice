@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAnimation characterAnimation;
     [SerializeField] protected bool isAttackBarFull;
     [SerializeField] private bool _isHealing;
+    [SerializeField] private string diedSoundEffect;
     
     public CharacterMovement CharacterMovement => characterMovement;
     public CharacterAttack CharacterAttack => characterAttack;
@@ -41,6 +42,8 @@ public class Character : MonoBehaviour
     
     public void OnDeadCharacter()
     {
+        SoundEffectManager.Instance.PlaySound2D(diedSoundEffect);
+        
         if (characterType == CharacterType.Player)
             GameManager.Instance.FailGame();
         else
