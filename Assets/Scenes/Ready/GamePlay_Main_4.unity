@@ -4576,6 +4576,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5072060334905771445}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 510667181124258925, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.69006
@@ -4641,6 +4669,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+--- !u!114 &5072060334905771445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 102901980554371935, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+  m_PrefabInstance: {fileID: 5072060334905771444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9ecb89bcc5221448c7a7a83079e057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!4 &5347237681933417354
 Transform:
   m_ObjectHideFlags: 0
