@@ -4176,7 +4176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
   owenrCharacter: {fileID: 7315166584989365161}
-  maxHealth: 210
+  maxHealth: 430
   currentHealth: 0
   soundEffect: 
   healthBarUI: {fileID: 2186260878497522123}
