@@ -10,7 +10,12 @@ public class EnemyCharacter : Character, IDamageable
     [SerializeField] protected float damageValue;
 
     public float DamageValue => damageValue;
-    
+
+    private void Start()
+    {
+        GameManager.Instance.AddCharacter(this);
+    }
+
     private void Update()
     {
         if (currentAttackBar >= maxAttackBar)

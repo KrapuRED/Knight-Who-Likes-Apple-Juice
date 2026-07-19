@@ -3356,11 +3356,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.69006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.42461
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295561780311792156, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3394,6 +3394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4861969718317661082, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2115334111}
     - target: {fileID: 5551203512914110090, guid: 088a92b9bfdfd3a4f8a564c20a885fb0, type: 3}
       propertyPath: m_Name
       value: 'DDOL - Game Manager '
@@ -3463,6 +3467,10 @@ PrefabInstance:
       propertyPath: healthBarUI
       value: 
       objectReference: {fileID: 445464061}
+    - target: {fileID: 8430664395810503391, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
+      propertyPath: moveSpeed
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8430664395810503391, guid: 13f06719339efea4eb65fafc5325af90, type: 3}
       propertyPath: pointContainer
       value: 

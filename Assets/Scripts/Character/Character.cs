@@ -36,6 +36,13 @@ public class Character : MonoBehaviour
     
     public void OnDeadCharacter()
     {
+        if (characterType == CharacterType.Player)
+            GameManager.Instance.FailGame();
+        else
+        {
+            GameManager.Instance.RemoveCharacter(this);
+        }
+        
         Destroy(gameObject);
     }
 }
