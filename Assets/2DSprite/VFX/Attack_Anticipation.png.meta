@@ -1,0 +1,498 @@
+fileFormatVersion: 2
+guid: 7782fab6e170344479ed1e5a8789b9e4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 832412608114480874
+    second: Attack_Anticipation_0
+  - first:
+      213: 3900927310351770212
+    second: Attack_Anticipation_1
+  - first:
+      213: 6774575416256497261
+    second: Attack_Anticipation_2
+  - first:
+      213: 6828104158544629055
+    second: Attack_Anticipation_3
+  - first:
+      213: -3554338785212256552
+    second: Attack_Anticipation_4
+  - first:
+      213: -6347105788284534005
+    second: Attack_Anticipation_5
+  - first:
+      213: -6166564988954398968
+    second: Attack_Anticipation_6
+  - first:
+      213: 6697220056671332736
+    second: Attack_Anticipation_7
+  - first:
+      213: 4744178159714829004
+    second: Attack_Anticipation_8
+  - first:
+      213: 8235169293921737210
+    second: Attack_Anticipation_9
+  - first:
+      213: -8190240664690901537
+    second: Attack_Anticipation_10
+  - first:
+      213: 1065909145242754239
+    second: Attack_Anticipation_11
+  - first:
+      213: -6242969647379620489
+    second: Attack_Anticipation_12
+  - first:
+      213: 3199653707455990025
+    second: Attack_Anticipation_13
+  - first:
+      213: 3650574531253544876
+    second: Attack_Anticipation_14
+  - first:
+      213: 1626303679984913529
+    second: Attack_Anticipation_15
+  - first:
+      213: 6581963439891248123
+    second: Attack_Anticipation_16
+  - first:
+      213: 3051600545737459764
+    second: Attack_Anticipation_17
+  - first:
+      213: 5827993612572483058
+    second: Attack_Anticipation_18
+  - first:
+      213: 9133361355970383588
+    second: Attack_Anticipation_19
+  - first:
+      213: -3210601082575059006
+    second: Attack_Anticipation_20
+  - first:
+      213: -2006267788241724952
+    second: Attack_Anticipation_21
+  - first:
+      213: -5713167358307898720
+    second: Attack_Anticipation_22
+  - first:
+      213: 2839997183881395036
+    second: Attack_Anticipation_23
+  - first:
+      213: 7561791650898939552
+    second: Attack_Anticipation_24
+  - first:
+      213: 5500403859977643368
+    second: Attack_Anticipation_25
+  - first:
+      213: 7562711339328861421
+    second: Attack_Anticipation_26
+  - first:
+      213: -1007662655197878028
+    second: Attack_Anticipation_27
+  - first:
+      213: -6111349953530757631
+    second: Attack_Anticipation_28
+  - first:
+      213: -9085447075849507618
+    second: Attack_Anticipation_29
+  - first:
+      213: 2758721017717962427
+    second: Attack_Anticipation_30
+  - first:
+      213: 6544184413935703500
+    second: Attack_Anticipation_31
+  - first:
+      213: 7842077170626851472
+    second: Attack_Anticipation_32
+  - first:
+      213: 3302619384563982742
+    second: Attack_Anticipation_33
+  - first:
+      213: -5963518639913306548
+    second: Attack_Anticipation_34
+  - first:
+      213: 1765109224736931453
+    second: Attack_Anticipation_35
+  - first:
+      213: 9051118347237741649
+    second: Attack_Anticipation_36
+  - first:
+      213: -1079283287032710895
+    second: Attack_Anticipation_37
+  - first:
+      213: 1377481974915905602
+    second: Attack_Anticipation_38
+  - first:
+      213: 943554240948841075
+    second: Attack_Anticipation_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Attack_Anticipation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae658355bd25d8b00800000000000000
+      internalID: 832412608114480874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_1
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 462232488b0e22630800000000000000
+      internalID: 3900927310351770212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_2
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d660016a270240e50800000000000000
+      internalID: 6774575416256497261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_3
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d8b6b2e8c42ce50800000000000000
+      internalID: 6828104158544629055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_4
+      rect:
+        serializedVersion: 2
+        x: 2320
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dea700e4b37caec0800000000000000
+      internalID: -3554338785212256552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_5
+      rect:
+        serializedVersion: 2
+        x: 2900
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b038979f9ec8ae7a0800000000000000
+      internalID: -6347105788284534005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_6
+      rect:
+        serializedVersion: 2
+        x: 3480
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f230d70d5fb6aa0800000000000000
+      internalID: -6166564988954398968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_7
+      rect:
+        serializedVersion: 2
+        x: 4060
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 089248c782e41fc50800000000000000
+      internalID: 6697220056671332736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Anticipation_8
+      rect:
+        serializedVersion: 2
+        x: 4640
+        y: 0
+        width: 580
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc208f886e4b6d140800000000000000
+      internalID: 4744178159714829004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 968d9367eb6fa7648b49de4430858df4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":580.0,"y":180.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Attack_Anticipation_0: 832412608114480874
+      Attack_Anticipation_1: 3900927310351770212
+      Attack_Anticipation_2: 6774575416256497261
+      Attack_Anticipation_3: 6828104158544629055
+      Attack_Anticipation_4: -3554338785212256552
+      Attack_Anticipation_5: -6347105788284534005
+      Attack_Anticipation_6: -6166564988954398968
+      Attack_Anticipation_7: 6697220056671332736
+      Attack_Anticipation_8: 4744178159714829004
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
