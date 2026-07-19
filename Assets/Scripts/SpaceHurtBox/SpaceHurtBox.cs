@@ -12,6 +12,7 @@ public class SpaceHurtBox : MonoBehaviour
         public float currentTime;
         public bool hasWarned;
         public PointDirection targetDirection;
+        public int attackID;
     }
     
     private Character _spaceOwner;
@@ -25,9 +26,7 @@ public class SpaceHurtBox : MonoBehaviour
     [SerializeField] private Transform centerPoint;
     [SerializeField] private float sizeRadius;
     [SerializeField] private SpriteRenderer indicatorSr;
-    [SerializeField] private Color safeColor = Color.green;
-    [SerializeField] private Color warningColor = Color.yellow;
-    [SerializeField] private Color dangerColor = Color.red;
+    [SerializeField] private Animator indicatorAnim;
 
     [SerializeField] private List<ActiveAttack> _activeAttacks = new();
     
@@ -46,7 +45,7 @@ public class SpaceHurtBox : MonoBehaviour
             if (!attack.hasWarned && timeRemaining <= warningThreshold)
             {
                 attack.hasWarned = true;
-                attack.owner?.CharacterAnimation.AnticipationAnimation(attack.targetDirection);
+                attack.owner?.CharacterAnimation.AnticipationAnimation(new[] { attack.targetDirection }, attack.attackID);
             }
 
             if (attack.currentTime >= timerActive)
@@ -80,30 +79,26 @@ public class SpaceHurtBox : MonoBehaviour
         }
 
         if (_activeAttacks.Count == 0)
-            indicatorSr.color = Color.white;
-        else if (anyDangerous)
-            indicatorSr.color = dangerColor;
+            indicatorSr.sprite = null;
         else if (anyWarning)
-            indicatorSr.color = warningColor;
-        else
-            indicatorSr.color = safeColor;
+        {
+            indicatorAnim.SetTrigger("Anticipation");
+        }
     }
     
-    public void ActivateHitBox(Character owner, float damage, PointDirection direction)
+    public void ActivateHitBox(Character owner, float damage, PointDirection direction, int indexAttack)
     {
+        Debug.Log($"Activating hitbox {owner.name} with attack index {indexAttack}");
+        
         _activeAttacks.Add(new ActiveAttack
         {
             owner = owner,
             damageAmount = damage,
             currentTime = 0f,
             hasWarned = false,
-            targetDirection = direction
+            targetDirection = direction,
+            attackID = indexAttack 
         });
-    }
-
-    private void OnExpired()
-    {
-        indicatorSr.color = Color.white;
     }
     
     private void CheckOverlapAndDamage(ActiveAttack attack)
@@ -117,18 +112,7 @@ public class SpaceHurtBox : MonoBehaviour
         if (damageable == null)
             return;
 
-        attack.owner?.CharacterAnimation.AttackAnimation(attack.targetDirection);
+        attack.owner?.CharacterAnimation.AttackAnimation(new[] { attack.targetDirection }, attack.attackID);
         damageable.TakeDamage(attack.damageAmount);
-    }
-
-    private void ExecuteDamage(IDamageable damageable)
-    {
-        damageable.TakeDamage(damageAmount);
-        indicatorSr.color = safeColor;
-    }
-
-    private void ResetSpaceHurtBox()
-    {
-        indicatorSr.color = safeColor;
     }
 }

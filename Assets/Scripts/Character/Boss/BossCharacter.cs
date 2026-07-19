@@ -28,7 +28,8 @@ public class BossCharacter : EnemyCharacter
 {
     [Header("Boss Attacks")] 
     [SerializeField] private List<BossAttackData> availableAttacks = new();
-
+    [SerializeField] private StatusBarUI attackBarUI;
+    
     private bool _isAttacking;
     private Coroutine _attackRoutine;
 
@@ -45,6 +46,7 @@ public class BossCharacter : EnemyCharacter
         }
 
         currentAttackBar += Time.deltaTime * rateAttackBar;
+        attackBarUI.UpdateStatusBar(currentAttackBar, maxAttackBar);
     }
 
     private void ChooseAttack()
@@ -107,37 +109,35 @@ public class BossCharacter : EnemyCharacter
 
     private void ExecuteAttack(BossAttackType type)
     {
+        int attackId = (int)type;
+
         switch (type)
         {
             case BossAttackType.StaffAttack:
-                AttackSingleLane();
+                AttackSingleLane(attackId);
                 break;
 
             case BossAttackType.ClawAttack:
-                AttackAllLanes();
-                break;
-
-            case BossAttackType.ShadowDodge:
-                OnDodgeAttack();
+                AttackAllLanes(attackId);
                 break;
         }
     }
 
-    private void AttackSingleLane()
+    private void AttackSingleLane(int index)
     {
         PointMovement target = ManagerPosition.Instance.CurrentPlayer;
-        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection, index);
     }
 
-    private void AttackAllLanes()
+    private void AttackAllLanes(int attackIndex)
     {
-        CharacterAttack.OnAttackMultipleByState();
+        CharacterAttack.OnAttackMultipleByState(attackIndex);
     }
 
-    private void AttackRandomBarrage()
+    private void AttackRandomBarrage(int attackIndex)
     {
         PointMovement target = ManagerPosition.Instance.GetRandomPoint();
-        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection, attackIndex);
     }
 
     public void OnDodgeAttack()

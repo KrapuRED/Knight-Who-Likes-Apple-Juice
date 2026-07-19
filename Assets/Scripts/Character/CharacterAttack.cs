@@ -12,13 +12,16 @@ public class CharacterAttack : MonoBehaviour
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        
+
         if (!StatusManager.Instance.UseAttackBar())
             return;
-        
-        ownerCharacter.CharacterAnimation.AttackAnimation(PointDirection.Center);
-        
-        VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);    
+
+        if (ownerCharacter.IsHealing)
+            return;
+
+        ownerCharacter.CharacterAnimation.AttackAnimation(new[] { PointDirection.Center });
+
+        VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);
     }
 
 
@@ -30,11 +33,11 @@ public class CharacterAttack : MonoBehaviour
         }
         
         Debug.Log($"Attack pos {currentPoint.gameObject.name}");
-        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint, enemyCharacter, enemyCharacter.DamageValue, currentPoint.PointDirection);
+        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint, enemyCharacter, enemyCharacter.DamageValue, currentPoint.PointDirection, 0);
         enemyCharacter.ResetCondition();
     }
     
-    public void OnAttackMultipleByState()
+    public void OnAttackMultipleByState(int attackIndex)
     {
         if (enemyCharacter != null && !enemyCharacter.IsAttackBarFull())
         {
@@ -42,7 +45,7 @@ public class CharacterAttack : MonoBehaviour
         }
         
         foreach (PointMovement point in ManagerPosition.Instance.GetMultiplePointMovements())
-            ManagerPosition.Instance.DropHitBoxByPoint(point, enemyCharacter, enemyCharacter.DamageValue, point.PointDirection);
+            ManagerPosition.Instance.DropHitBoxByPoint(point, enemyCharacter, enemyCharacter.DamageValue, point.PointDirection, attackIndex);
         
         enemyCharacter.ResetCondition();
     }

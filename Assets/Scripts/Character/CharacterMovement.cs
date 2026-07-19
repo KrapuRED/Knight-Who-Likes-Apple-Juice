@@ -109,6 +109,9 @@ public class CharacterMovement : MonoBehaviour
     { 
         if (!context.performed) return;
 
+        if (ownerCharacter.IsHealing)
+            return;
+        
         Vector2 dir = context.ReadValue<Vector2>();
 
         if (!StatusManager.Instance.UseStamina(ownerCharacter.DodgeCost))

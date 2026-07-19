@@ -34,7 +34,7 @@ public class ManagerPosition : MonoBehaviour
         return pointMovements[randomIndex];
     }
 
-    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage, PointDirection direction)
+    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage, PointDirection direction, int indexAttack)
     {
         bool foundMatch = false;
 
@@ -42,7 +42,7 @@ public class ManagerPosition : MonoBehaviour
         {
             if (attackPoint.PointDirection == point.PointDirection)
             {
-                point.ActivateHitBox(ownerCharacter, damage, direction);
+                point.ActivateHitBox(ownerCharacter, damage, direction, indexAttack);
                 foundMatch = true;
             }
         }

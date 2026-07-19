@@ -22,19 +22,12 @@ public class MoveAttack : MonoBehaviour
     }
 
     // MoveAttack.cs
-    public void PlayAnimation(PointDirection direction, Action onComplete = null)
+    public void PlayAnimation(Vector3 targetPosition, Action onComplete = null)
     {
         if (_isActive) return;
 
-        PointMovement targetPoint = ManagerPosition.Instance.GetEnemyPointByDirection(direction);
-        if (targetPoint == null)
-        {
-            Debug.LogWarning($"{gameObject.name}: no point found for direction {direction}");
-            return;
-        }
-
         _isActive = true;
-        _moveAnim = StartCoroutine(MoveAnimation(targetPoint.transform.position, onComplete));
+        _moveAnim = StartCoroutine(MoveAnimation(targetPosition, onComplete));
     }
 
     private IEnumerator MoveAnimation(Vector3 targetPosition, Action onComplete)

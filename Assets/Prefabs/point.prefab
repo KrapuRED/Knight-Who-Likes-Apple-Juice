@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a096c7d6ffc49b42b9b486dd561a57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceHurtBox
-  expriedTime: 2.5
-  timerActive: 2
+  expriedTime: 3
+  timerActive: 2.5
   warningThreshold: 0.5
   damageAmount: 10
   targetLayer:
@@ -116,9 +116,8 @@ MonoBehaviour:
   centerPoint: {fileID: 8170699662462368773}
   sizeRadius: 2
   indicatorSr: {fileID: 558370035699992415}
-  safeColor: {r: 0, g: 1, b: 0, a: 1}
-  warningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  dangerColor: {r: 1, g: 0, b: 0, a: 1}
+  indicatorAnim: {fileID: 7680588896540252971}
+  _activeAttacks: []
 --- !u!50 &1112657633708426017
 Rigidbody2D:
   serializedVersion: 5
@@ -204,6 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322687609780641683}
   - component: {fileID: 558370035699992415}
+  - component: {fileID: 7680588896540252971}
   m_Layer: 0
   m_Name: indicator Anticipation
   m_TagString: Untagged
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -283,8 +283,30 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7680588896540252971
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808460928152781866}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fd75092cdff2e2439dbe6756de22afa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6778666569784782867
 GameObject:
   m_ObjectHideFlags: 0

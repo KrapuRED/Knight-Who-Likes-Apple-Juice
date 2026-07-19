@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
   characterType: 0
-  characterMovement: {fileID: 0}
+  characterMovement: {fileID: 8430664395810503391}
   characterAttack: {fileID: 555509681780828420}
   characterHealth: {fileID: 8230733977185970016}
   characterAnimation: {fileID: 7945696193790552221}
+  _isHealing: 0
   dodgeCost: 20
   durationImmune: 0.3
   isImmune: 0
@@ -118,10 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
   ownerCharacter: {fileID: 3514671914806557487}
-  moveSpeed: 125
+  moveSpeed: 100
   pointContainer: {fileID: 0}
   points: []
-  minDodgeVisibleTime: 0.15
+  minDodgeVisibleTime: 0.3
 --- !u!70 &3517012794490605167
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -452,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960b860b6ef23d74394f3ddb67d24a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
+  owner: {fileID: 3514671914806557487}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 2473313740395272363}
   bobEffect: {fileID: 62022048504873510}
@@ -459,8 +461,15 @@ MonoBehaviour:
   idleSprites: {fileID: 7408791951343775973, guid: 20fee7ba41bfcce4dbe6d8538cb801fd, type: 3}
   dodgeSprites: {fileID: 1176979436120187810, guid: 9bcaa09fc9ce34c4e83edb5f90cc5698, type: 3}
   healSprites: {fileID: -7776838604706296343, guid: 20c2c5b6ee41ab8428add3b716410d51, type: 3}
+  attackSets:
+  - attackId: 0
+    anticipationSprite: {fileID: 0}
+    attackSprite: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
   attackSprites: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
   anticipationSprite: {fileID: 0}
+  attackSecondSprites: {fileID: 0}
+  anticipationSecondSprite: {fileID: 0}
+  vfxAttack: {fileID: 0}
 --- !u!1 &7717776232075447406
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,12 +14,15 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAttack characterAttack;
     [SerializeField] private CharacterHealth characterHealth;
     [SerializeField] private CharacterAnimation characterAnimation;
+
+    [SerializeField] private bool _isHealing;
     
     public CharacterMovement CharacterMovement => characterMovement;
     public CharacterAttack CharacterAttack => characterAttack;
     public CharacterHealth CharacterHealth => characterHealth;
     public  CharacterAnimation CharacterAnimation => characterAnimation;
     public CharacterType CharacterType => characterType;
+    public bool IsHealing => _isHealing;
     
     private void Awake()
     {
@@ -45,4 +48,6 @@ public class Character : MonoBehaviour
         
         Destroy(gameObject);
     }
+    
+    public void TakeHeal(bool isHealing) => _isHealing = isHealing;
 }

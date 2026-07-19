@@ -31,7 +31,7 @@ public class CharacterHealth : MonoBehaviour
 
     public void UpdateHealthRestore(float amount)
     {
-        owenrCharacter.CharacterAnimation.HealAnimation();
+        owenrCharacter.CharacterAnimation.PlayHealAnimation();
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         

@@ -2,9 +2,18 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[Serializable]
+public class AttackAnimationSet
+{
+    public int attackId; // matches whatever ID the boss's attack data uses
+    public Sprite anticipationSprite;
+    public Sprite attackSprite;
+    public GameObject vfx;
+}
+
 public class CharacterAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private Character owner;
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     [SerializeField] private BobEffect  bobEffect;
@@ -14,14 +23,20 @@ public class CharacterAnimation : MonoBehaviour
     [SerializeField] private Sprite idleSprites;
     [SerializeField] private Sprite dodgeSprites;
     [SerializeField] private Sprite healSprites;
-    [SerializeField] private Sprite attackSprites;
-    [SerializeField] private Sprite anticipationSprite;
-
-    private Coroutine _animationRoutine;
     
+    [Header("Attack Variants")]
+    [SerializeField] private AttackAnimationSet[] attackSets;
+    
+    [Header(("VFX"))]
+    [SerializeField] private GameObject vfxAttack;
+    
+    private Coroutine _animationRoutine;
+    private AttackAnimationSet _activeSet; // tracks which set's VFX is currently shown, so Idle knows what to hide
+
     private void OnDestroy()
     {
         StopAllCoroutines();
+        _animationRoutine = null;
     }
 
     private void SetAnimationRoutine(IEnumerator routine)
@@ -31,63 +46,123 @@ public class CharacterAnimation : MonoBehaviour
 
         _animationRoutine = routine != null ? StartCoroutine(routine) : null;
     }
-    
+
+    private AttackAnimationSet GetAttackSet(int attackId)
+    {
+        foreach (var set in attackSets)
+            if (set.attackId == attackId)
+                return set;
+
+        Debug.LogWarning($"{gameObject.name}: no AttackAnimationSet found for attackId {attackId}");
+        return null;
+    }
+
+    private Vector3 GetTargetPosition(PointDirection[] directions)
+    {
+        Vector3 sum = Vector3.zero;
+        int count = 0;
+
+        foreach (PointDirection dir in directions)
+        {
+            PointMovement point = ManagerPosition.Instance.GetEnemyPointByDirection(dir);
+            if (point == null) continue;
+
+            sum += point.transform.position;
+            count++;
+        }
+
+        return count > 0 ? sum / count : transform.position;
+    }
+
     public void IdleAnimation()
     {
+        if (bobEffect == null)
+            return;
+
+        if (_activeSet?.vfx != null)
+            _activeSet.vfx.SetActive(false);
+
+        _activeSet = null;
+
         bobEffect.ResumeBobbing();
         spriteRenderer.sprite = idleSprites;
     }
-    
+
     public void DodgeAnimation(PointDirection direction)
     {
-        if (direction == PointDirection.Left)
-            spriteRenderer.flipX = true;
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
-        
+        spriteRenderer.flipX = direction == PointDirection.Left;
+
         bobEffect.StopBobbing();
         spriteRenderer.sprite = dodgeSprites;
-        
+
         SetAnimationRoutine(null);
     }
 
-    public void AttackAnimation(PointDirection direction)
+    public void AttackAnimation(PointDirection[] directions, int attackId = 0)
     {
-        spriteRenderer.sprite = attackSprites;
+        AttackAnimationSet set = GetAttackSet(attackId);
+        if (set == null || set.attackSprite == null)
+            return;
+
+        _activeSet = set;
+        spriteRenderer.sprite = set.attackSprite;
+
+        Vector3 spawnPos = GetTargetPosition(directions);
+
+        if (set.vfx != null)
+        {
+            set.vfx.SetActive(true);
+            set.vfx.transform.position = spawnPos;
+        }
 
         if (moveAttack != null)
-            moveAttack.PlayAnimation(direction, IdleAnimation); // idle (and ResumeBobbing) fires exactly when lunge finishes
+            moveAttack.PlayAnimation(spawnPos, IdleAnimation);
         else
-            SetAnimationRoutine(DelayIdleAnimation()); // fallback for enemies without a lunge
-    }
-    
-    public void HealAnimation()
-    {
-        bobEffect.StopBobbing();
-        spriteRenderer.sprite = healSprites;
-        
-        SetAnimationRoutine(DelayIdleAnimation());
+            SetAnimationRoutine(DelayIdleAnimation());
     }
 
-    public void AnticipationAnimation(PointDirection direction)
+    public void AnticipationAnimation(PointDirection[] directions, int attackId)
+    {
+        AttackAnimationSet set = GetAttackSet(attackId);
+        if (set == null || set.anticipationSprite == null)
+            return;
+
+        spriteRenderer.sprite = set.anticipationSprite;
+
+        if (bobEffect != null)
+            bobEffect.StopBobbing();
+
+        SetAnimationRoutine(DelayAttackAnimation(directions, attackId));
+    }
+
+    public void PlayHealAnimation()
     {
         bobEffect.StopBobbing();
-        
-        SetAnimationRoutine(DelayAttackAnimation(direction));
+
+        owner.TakeHeal(true);
+        spriteRenderer.sprite = healSprites;
+
+        SetAnimationRoutine(HealingAnimation());
     }
-    
-    IEnumerator DelayIdleAnimation()
+
+    private IEnumerator DelayAttackAnimation(PointDirection[] directions, int attackId)
+    {
+        yield return new WaitForSeconds(0.5f);
+        AttackAnimation(directions, attackId);
+    }
+
+    private IEnumerator DelayIdleAnimation()
     {
         yield return new WaitForSeconds(0.5f);
         IdleAnimation();
         _animationRoutine = null;
     }
-    
-    IEnumerator DelayAttackAnimation(PointDirection direction)
+
+    private IEnumerator HealingAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
-        AttackAnimation(direction);
+        yield return new WaitForSeconds(1f);
+        owner.TakeHeal(false);
+        IdleAnimation();
+        _animationRoutine = null;
     }
 }
