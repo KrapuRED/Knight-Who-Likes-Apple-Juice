@@ -16,7 +16,7 @@ public class CharacterAttack : MonoBehaviour
         if (!StatusManager.Instance.UseAttackBar())
             return;
         
-        ownerCharacter.CharacterAnimation.AttackAnimation();
+        ownerCharacter.CharacterAnimation.AttackAnimation(PointDirection.Center);
         
         VFXHitPool.Instance.SpawnHitbox(target.position, target.rotation, damage);    
     }
@@ -30,7 +30,7 @@ public class CharacterAttack : MonoBehaviour
         }
         
         Debug.Log($"Attack pos {currentPoint.gameObject.name}");
-        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint, enemyCharacter, enemyCharacter.DamageValue);
+        ManagerPosition.Instance.DropHitBoxByPoint(currentPoint, enemyCharacter, enemyCharacter.DamageValue, currentPoint.PointDirection);
         enemyCharacter.ResetCondition();
     }
     
@@ -42,7 +42,7 @@ public class CharacterAttack : MonoBehaviour
         }
         
         foreach (PointMovement point in ManagerPosition.Instance.GetMultiplePointMovements())
-            ManagerPosition.Instance.DropHitBoxByPoint(point, enemyCharacter, enemyCharacter.DamageValue);
+            ManagerPosition.Instance.DropHitBoxByPoint(point, enemyCharacter, enemyCharacter.DamageValue, point.PointDirection);
         
         enemyCharacter.ResetCondition();
     }

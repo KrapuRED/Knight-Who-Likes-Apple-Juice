@@ -7,7 +7,7 @@ public class BobEffect : MonoBehaviour
     [SerializeField] private float bobSpeed = 2f;
 
     private Vector3 _startPos;
-    [SerializeField] private bool _isBobbing = true;
+    private bool _isBobbing = true;
 
     private void Start()
     {

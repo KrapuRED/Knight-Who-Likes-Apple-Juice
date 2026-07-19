@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class CharacterAnimation : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     [SerializeField] private BobEffect  bobEffect;
+    [SerializeField] private MoveAttack moveAttack;
 
     [Header(("Sprite"))]
     [SerializeField] private Sprite idleSprites;
@@ -15,19 +17,29 @@ public class CharacterAnimation : MonoBehaviour
     [SerializeField] private Sprite attackSprites;
     [SerializeField] private Sprite anticipationSprite;
 
+    private Coroutine _animationRoutine;
+    
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 
+    private void SetAnimationRoutine(IEnumerator routine)
+    {
+        if (_animationRoutine != null)
+            StopCoroutine(_animationRoutine);
+
+        _animationRoutine = routine != null ? StartCoroutine(routine) : null;
+    }
+    
     public void IdleAnimation()
     {
-        Debug.Log($"{gameObject.name}: IdleAnimation called");
-        
         bobEffect.ResumeBobbing();
         spriteRenderer.sprite = idleSprites;
     }
     
     public void DodgeAnimation(PointDirection direction)
     {
-        Debug.Log($"{gameObject.name}: Dodge animation called {direction}");
-        
         if (direction == PointDirection.Left)
             spriteRenderer.flipX = true;
         else
@@ -37,38 +49,45 @@ public class CharacterAnimation : MonoBehaviour
         
         bobEffect.StopBobbing();
         spriteRenderer.sprite = dodgeSprites;
+        
+        SetAnimationRoutine(null);
     }
 
-    public void AttackAnimation()
+    public void AttackAnimation(PointDirection direction)
     {
-        StartCoroutine(DelayIdleAnimation());
-        bobEffect.StopBobbing();
         spriteRenderer.sprite = attackSprites;
+
+        if (moveAttack != null)
+            moveAttack.PlayAnimation(direction, IdleAnimation); // idle (and ResumeBobbing) fires exactly when lunge finishes
+        else
+            SetAnimationRoutine(DelayIdleAnimation()); // fallback for enemies without a lunge
     }
     
     public void HealAnimation()
     {
-        StartCoroutine(DelayIdleAnimation());
-        
         bobEffect.StopBobbing();
         spriteRenderer.sprite = healSprites;
+        
+        SetAnimationRoutine(DelayIdleAnimation());
     }
 
-    public void AnticipationAnimation()
+    public void AnticipationAnimation(PointDirection direction)
     {
-        StartCoroutine(DelayAttackAnimation());
         bobEffect.StopBobbing();
+        
+        SetAnimationRoutine(DelayAttackAnimation(direction));
     }
     
     IEnumerator DelayIdleAnimation()
     {
         yield return new WaitForSeconds(0.5f);
         IdleAnimation();
+        _animationRoutine = null;
     }
     
-    IEnumerator DelayAttackAnimation()
+    IEnumerator DelayAttackAnimation(PointDirection direction)
     {
         yield return new WaitForSeconds(0.5f);
-        AttackAnimation();
+        AttackAnimation(direction);
     }
 }

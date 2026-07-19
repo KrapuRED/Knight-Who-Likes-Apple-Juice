@@ -126,7 +126,7 @@ public class BossCharacter : EnemyCharacter
     private void AttackSingleLane()
     {
         PointMovement target = ManagerPosition.Instance.CurrentPlayer;
-        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection);
     }
 
     private void AttackAllLanes()
@@ -137,7 +137,7 @@ public class BossCharacter : EnemyCharacter
     private void AttackRandomBarrage()
     {
         PointMovement target = ManagerPosition.Instance.GetRandomPoint();
-        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue);
+        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection);
     }
 
     public void OnDodgeAttack()

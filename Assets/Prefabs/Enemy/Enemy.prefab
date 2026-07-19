@@ -116,7 +116,7 @@ MonoBehaviour:
   maxAttackBar: 100
   currentAttackBar: 0
   rateAttackBar: 23.8
-  damageValue: 10
+  damageValue: 15
 --- !u!114 &5650253624645392224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +172,52 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!1 &2392383583750092015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5838233749211399633}
+  - component: {fileID: 1970675798138450362}
+  m_Layer: 6
+  m_Name: Animation - MoveAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5838233749211399633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2392383583750092015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2733972038910226074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1970675798138450362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2392383583750092015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ffb8788a977fd49a62875b837c639d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveAttack
+  parent: {fileID: 39597426142840520}
+  moveSpeed: 25
 --- !u!1 &2633043523983861782
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
   owenrCharacter: {fileID: 2991143034619173504}
-  maxHealth: 45
+  maxHealth: 50
   currentHealth: 0
   healthBarUI: {fileID: 9072198965924038732}
 --- !u!1 &4331651577172002464
@@ -485,6 +531,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4340842298769117354}
+  - {fileID: 5838233749211399633}
   m_Father: {fileID: 5755079954032174087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3518827165182515231
@@ -502,6 +549,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   spriteRenderer: {fileID: 8406854559947217157}
   bobEffect: {fileID: 3613087997950377102}
+  moveAttack: {fileID: 1970675798138450362}
   idleSprites: {fileID: 1267190137828850596, guid: 580e08418b76d584995cd108c51dda09, type: 3}
   dodgeSprites: {fileID: -2324581656518771834, guid: c07cb9ea5597fd847babf80ab1b30a08, type: 3}
   healSprites: {fileID: 0}
@@ -554,7 +602,6 @@ MonoBehaviour:
   parent: {fileID: 39597426142840520}
   bobHeight: 0.2
   bobSpeed: 2
-  _isBobbing: 1
 --- !u!1001 &8650975703670524034
 PrefabInstance:
   m_ObjectHideFlags: 0

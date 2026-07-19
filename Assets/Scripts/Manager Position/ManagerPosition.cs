@@ -7,6 +7,7 @@ public class ManagerPosition : MonoBehaviour
     public static ManagerPosition Instance {get; private set;}
 
     [SerializeField] private PointMovement currPointPlayer;
+    [SerializeField] private List<PointMovement> enemyPointMovements = new();
     [SerializeField] private List<PointMovement> pointMovements = new();
     
     public PointMovement CurrentPlayer => currPointPlayer;
@@ -33,7 +34,7 @@ public class ManagerPosition : MonoBehaviour
         return pointMovements[randomIndex];
     }
 
-    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage)
+    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage, PointDirection direction)
     {
         bool foundMatch = false;
 
@@ -41,7 +42,7 @@ public class ManagerPosition : MonoBehaviour
         {
             if (attackPoint.PointDirection == point.PointDirection)
             {
-                point.ActivateHitBox(ownerCharacter, damage);
+                point.ActivateHitBox(ownerCharacter, damage, direction);
                 foundMatch = true;
             }
         }
@@ -64,5 +65,10 @@ public class ManagerPosition : MonoBehaviour
             result.Add(sidePoint);
 
         return result;
+    }
+    
+    public PointMovement GetEnemyPointByDirection(PointDirection direction)
+    {
+        return enemyPointMovements.FirstOrDefault(p => p.PointDirection == direction);
     }
 }

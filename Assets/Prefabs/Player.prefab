@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
   ownerCharacter: {fileID: 3514671914806557487}
   enemyCharacter: {fileID: 0}
-  damage: 10
+  damage: 20
   target: {fileID: 0}
 --- !u!1 &5669762282410559259
 GameObject:
@@ -460,6 +460,7 @@ MonoBehaviour:
   dodgeSprites: {fileID: 1176979436120187810, guid: 9bcaa09fc9ce34c4e83edb5f90cc5698, type: 3}
   healSprites: {fileID: -7776838604706296343, guid: 20c2c5b6ee41ab8428add3b716410d51, type: 3}
   attackSprites: {fileID: 220019322212453352, guid: 571e5140b12d87b448bb0134af7bcba0, type: 3}
+  anticipationSprite: {fileID: 0}
 --- !u!1 &7717776232075447406
 GameObject:
   m_ObjectHideFlags: 0

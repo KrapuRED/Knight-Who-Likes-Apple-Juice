@@ -11,6 +11,7 @@ public class SpaceHurtBox : MonoBehaviour
         public float damageAmount;
         public float currentTime;
         public bool hasWarned;
+        public PointDirection targetDirection;
     }
     
     private Character _spaceOwner;
@@ -30,10 +31,6 @@ public class SpaceHurtBox : MonoBehaviour
 
     [SerializeField] private List<ActiveAttack> _activeAttacks = new();
     
-    private float _currentTime;
-    private bool _hasWarned;
-    private bool _isSpent = true;
-    
     private void Update()
     {
         if (_activeAttacks.Count == 0)
@@ -49,7 +46,7 @@ public class SpaceHurtBox : MonoBehaviour
             if (!attack.hasWarned && timeRemaining <= warningThreshold)
             {
                 attack.hasWarned = true;
-                attack.owner?.CharacterAnimation.AnticipationAnimation();
+                attack.owner?.CharacterAnimation.AnticipationAnimation(attack.targetDirection);
             }
 
             if (attack.currentTime >= timerActive)
@@ -92,20 +89,20 @@ public class SpaceHurtBox : MonoBehaviour
             indicatorSr.color = safeColor;
     }
     
-    public void ActivateHitBox(Character owner, float damage)
+    public void ActivateHitBox(Character owner, float damage, PointDirection direction)
     {
         _activeAttacks.Add(new ActiveAttack
         {
             owner = owner,
             damageAmount = damage,
             currentTime = 0f,
-            hasWarned = false
+            hasWarned = false,
+            targetDirection = direction
         });
     }
 
     private void OnExpired()
     {
-        _isSpent = true;
         indicatorSr.color = Color.white;
     }
     
@@ -120,22 +117,18 @@ public class SpaceHurtBox : MonoBehaviour
         if (damageable == null)
             return;
 
-        attack.owner?.CharacterAnimation.AttackAnimation();
+        attack.owner?.CharacterAnimation.AttackAnimation(attack.targetDirection);
         damageable.TakeDamage(attack.damageAmount);
     }
 
     private void ExecuteDamage(IDamageable damageable)
     {
         damageable.TakeDamage(damageAmount);
-        _isSpent = true;
         indicatorSr.color = safeColor;
     }
 
     private void ResetSpaceHurtBox()
     {
         indicatorSr.color = safeColor;
-        _currentTime = 0f;
-        _hasWarned = false;
-        _isSpent = false;
     }
 }
