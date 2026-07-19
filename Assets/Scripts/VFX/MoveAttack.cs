@@ -22,23 +22,41 @@ public class MoveAttack : MonoBehaviour
     }
 
     // MoveAttack.cs
-    public void PlayAnimation(Vector3 targetPosition, Action onComplete = null)
+    public void PlayAnimationByPointDirection(PointDirection direction, string soundEffect,  Action onComplete)
+    {
+        if (_isActive) return;
+
+        PointMovement targetPoint = ManagerPosition.Instance.GetEnemyPointByDirection(direction);
+        if (targetPoint == null)
+        {
+            Debug.LogWarning($"{gameObject.name}: no point found for direction {direction}");
+            return;
+        }
+
+        _isActive = true;
+        _moveAnim = StartCoroutine(MoveAnimation(targetPoint.transform.position, onComplete, soundEffect));
+    }
+
+     public void PlayAnimationByVector(Vector3 target, string soundEffect, Action onComplete = null)
     {
         if (_isActive) return;
 
         _isActive = true;
-        _moveAnim = StartCoroutine(MoveAnimation(targetPosition, onComplete));
+        _moveAnim = StartCoroutine(MoveAnimation(target, onComplete, soundEffect));
     }
 
-    private IEnumerator MoveAnimation(Vector3 targetPosition, Action onComplete)
+    private IEnumerator MoveAnimation(Vector3 targetPosition, Action onComplete, string soundEffect)
     {
-        while (Vector3.Distance(parent.position, targetPosition) > 0.01f)
+        if (!string.IsNullOrEmpty(soundEffect))
+            SoundEffectManager.Instance.PlaySound2D(soundEffect);
+        
+        while (Vector3.Distance(parent.position, targetPosition) > 0.1f)
         {
             parent.position = Vector3.MoveTowards(parent.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
-
-        while (Vector3.Distance(parent.position, _startPos) > 0.01f)
+        
+        while (Vector3.Distance(parent.position, _startPos) > 0.1f)
         {
             parent.position = Vector3.MoveTowards(parent.position, _startPos, moveSpeed * Time.deltaTime);
             yield return null;

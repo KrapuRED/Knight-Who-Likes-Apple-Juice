@@ -18,10 +18,13 @@ public class EnemyCharacter : Character, IDamageable
 
     private void Update()
     {
-        if (currentAttackBar >= maxAttackBar)
-            return;
-        
         currentAttackBar += Time.deltaTime * rateAttackBar;
+    
+        // Kunci nilainya agar wajib berada di antara 0 dan maxAttackBar
+        currentAttackBar = Mathf.Clamp(currentAttackBar, 0f, maxAttackBar);
+
+        // Tentukan status full atau tidak
+        isAttackBarFull = (currentAttackBar >= maxAttackBar);
     }
 
     public void TakeDamage(float amountDamage)
@@ -30,6 +33,4 @@ public class EnemyCharacter : Character, IDamageable
     }
 
     public void ResetCondition() => currentAttackBar = 0;
-    
-    public bool IsAttackBarFull() => currentAttackBar >= maxAttackBar;
 }

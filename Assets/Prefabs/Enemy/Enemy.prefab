@@ -536,7 +536,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -395472614162240081, guid: 7678b95274f61e04bb9f265dbe110f62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -544,7 +544,7 @@ SpriteRenderer:
   m_Size: {x: 5.0022984, y: 8.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &3942411666041975624
 Animator:
@@ -663,7 +663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
   owner: {fileID: 2991143034619173504}
-  animator: {fileID: 0}
   spriteRenderer: {fileID: 8406854559947217157}
   bobEffect: {fileID: 3613087997950377102}
   moveAttack: {fileID: 1970675798138450362}
@@ -674,10 +673,7 @@ MonoBehaviour:
   - attackId: 0
     anticipationSprite: {fileID: -2324581656518771834, guid: c07cb9ea5597fd847babf80ab1b30a08, type: 3}
     attackSprite: {fileID: 4821426283748699070, guid: a13c4e26348177d4a855b821fbe57325, type: 3}
-  attackSprites: {fileID: 4821426283748699070, guid: a13c4e26348177d4a855b821fbe57325, type: 3}
-  anticipationSprite: {fileID: -2324581656518771834, guid: c07cb9ea5597fd847babf80ab1b30a08, type: 3}
-  attackSecondSprites: {fileID: 0}
-  anticipationSecondSprite: {fileID: 0}
+    vfx: {fileID: 5284751483411921744}
   vfxAttack: {fileID: 5284751483411921744}
 --- !u!1 &7730064210660834173
 GameObject:

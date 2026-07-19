@@ -117,6 +117,8 @@ public class CharacterMovement : MonoBehaviour
         if (!StatusManager.Instance.UseStamina(ownerCharacter.DodgeCost))
             return;
 
+        SoundEffectManager.Instance.PlaySound2D("player_dodge");
+        
         ownerCharacter.OnDodge();
         OnMove(dir);
     }

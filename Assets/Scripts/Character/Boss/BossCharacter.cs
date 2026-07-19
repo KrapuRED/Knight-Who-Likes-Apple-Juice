@@ -44,8 +44,12 @@ public class BossCharacter : EnemyCharacter
             currentAttackBar = 0f;
             return;
         }
-
+        
         currentAttackBar += Time.deltaTime * rateAttackBar;
+        currentAttackBar = Mathf.Clamp(currentAttackBar, 0f, maxAttackBar);
+
+        isAttackBarFull = (currentAttackBar >= maxAttackBar);
+        
         attackBarUI.UpdateStatusBar(currentAttackBar, maxAttackBar);
     }
 
@@ -57,7 +61,7 @@ public class BossCharacter : EnemyCharacter
 
         if (eligible.Count == 0)
         {
-            Debug.LogWarning($"{gameObject.name}: no eligible boss attacks (all on cooldown)");
+            Debug.Log($"{gameObject.name}: no eligible boss attacks (all on cooldown)");
             return;
         }
 
@@ -88,21 +92,21 @@ public class BossCharacter : EnemyCharacter
     private IEnumerator RunAttackSequence(BossAttackData data)
     {
         _isAttacking = true;
-
         int repeatCount = Mathf.Max(1, data.repeatAttack);
 
         for (int i = 0; i < repeatCount; i++)
         {
             ExecuteAttack(data.attackType);
 
-            // wait between repeats, but skip the wait after the final repeat
             if (i < repeatCount - 1)
+            {
                 yield return new WaitForSeconds(data.delayBetweenRepeats);
+            }
         }
 
         if (data.postAttackDelay > 0f)
             yield return new WaitForSeconds(data.postAttackDelay);
-
+        
         _isAttacking = false;
         _attackRoutine = null;
     }
@@ -114,24 +118,25 @@ public class BossCharacter : EnemyCharacter
         switch (type)
         {
             case BossAttackType.StaffAttack:
-                AttackSingleLane(attackId);
+                AttackSingleLane(attackId, "staff");
                 break;
 
             case BossAttackType.ClawAttack:
-                AttackAllLanes(attackId);
+                AttackAllLanes(attackId, "claw");
                 break;
         }
     }
 
-    private void AttackSingleLane(int index)
+    private void AttackSingleLane(int index, string soundEffect)
     {
+        Debug.LogWarning("Attacking single lane");
         PointMovement target = ManagerPosition.Instance.CurrentPlayer;
-        ManagerPosition.Instance.DropHitBoxByPoint(target, this, DamageValue, target.PointDirection, index);
+        CharacterAttack.OnAttackByState(target, soundEffect);
     }
 
-    private void AttackAllLanes(int attackIndex)
+    private void AttackAllLanes(int attackIndex, string soundEffect)
     {
-        CharacterAttack.OnAttackMultipleByState(attackIndex);
+        CharacterAttack.OnAttackMultipleByState(attackIndex, soundEffect);
     }
 
     private void AttackRandomBarrage(int attackIndex)

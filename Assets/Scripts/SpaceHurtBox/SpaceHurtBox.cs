@@ -1,4 +1,4 @@
-using System;
+
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -43,10 +43,7 @@ public class SpaceHurtBox : MonoBehaviour
             float timeRemaining = timerActive - attack.currentTime;
 
             if (!attack.hasWarned && timeRemaining <= warningThreshold)
-            {
                 attack.hasWarned = true;
-                attack.owner?.CharacterAnimation.AnticipationAnimation(new[] { attack.targetDirection }, attack.attackID);
-            }
 
             if (attack.currentTime >= timerActive)
             {
@@ -56,40 +53,32 @@ public class SpaceHurtBox : MonoBehaviour
             }
 
             if (attack.currentTime >= expriedTime)
-            {
-                attack.owner?.CharacterAnimation.IdleAnimation();
                 _activeAttacks.RemoveAt(i);
-            }
         }
 
         UpdateIndicatorColor();
     }
-    
+
     private void UpdateIndicatorColor()
     {
         bool anyDangerous = false;
-        bool anyWarning = false;
 
         foreach (var attack in _activeAttacks)
         {
             if (attack.currentTime >= timerActive)
                 anyDangerous = true;
             else if (attack.hasWarned)
-                anyWarning = true;
+            {
+                indicatorAnim.SetTrigger("Anticipation");
+            }
         }
 
         if (_activeAttacks.Count == 0)
             indicatorSr.sprite = null;
-        else if (anyWarning)
-        {
-            indicatorAnim.SetTrigger("Anticipation");
-        }
     }
-    
-    public void ActivateHitBox(Character owner, float damage, PointDirection direction, int indexAttack)
+
+    public float ActivateHitBox(Character owner, float damage, PointDirection direction, int indexAttack)
     {
-        Debug.Log($"Activating hitbox {owner.name} with attack index {indexAttack}");
-        
         _activeAttacks.Add(new ActiveAttack
         {
             owner = owner,
@@ -97,10 +86,12 @@ public class SpaceHurtBox : MonoBehaviour
             currentTime = 0f,
             hasWarned = false,
             targetDirection = direction,
-            attackID = indexAttack 
+            attackID = indexAttack
         });
+
+        return timerActive - warningThreshold; // how long until this hurtbox would normally warn
     }
-    
+
     private void CheckOverlapAndDamage(ActiveAttack attack)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(centerPoint.position, sizeRadius, targetLayer);
@@ -112,7 +103,6 @@ public class SpaceHurtBox : MonoBehaviour
         if (damageable == null)
             return;
 
-        attack.owner?.CharacterAnimation.AttackAnimation(new[] { attack.targetDirection }, attack.attackID);
-        damageable.TakeDamage(attack.damageAmount);
+        damageable.TakeDamage(attack.damageAmount); // no CharacterAnimation call here anymore
     }
 }

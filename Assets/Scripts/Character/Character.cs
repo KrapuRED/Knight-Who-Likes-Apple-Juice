@@ -4,7 +4,8 @@ using UnityEngine;
 public enum CharacterType
 {
     Player, 
-    Enemy
+    Enemy,
+    Boss
 }
 
 public class Character : MonoBehaviour
@@ -14,7 +15,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAttack characterAttack;
     [SerializeField] private CharacterHealth characterHealth;
     [SerializeField] private CharacterAnimation characterAnimation;
-
+    [SerializeField] protected bool isAttackBarFull;
     [SerializeField] private bool _isHealing;
     
     public CharacterMovement CharacterMovement => characterMovement;
@@ -23,6 +24,7 @@ public class Character : MonoBehaviour
     public  CharacterAnimation CharacterAnimation => characterAnimation;
     public CharacterType CharacterType => characterType;
     public bool IsHealing => _isHealing;
+    public bool IsAttackBarFull => isAttackBarFull;
     
     private void Awake()
     {

@@ -98,7 +98,7 @@ public class CharacterAnimation : MonoBehaviour
         SetAnimationRoutine(null);
     }
 
-    public void AttackAnimation(PointDirection[] directions, int attackId = 0)
+    public void AttackAnimation(PointDirection[] directions, int attackId, string soundEffect)
     {
         AttackAnimationSet set = GetAttackSet(attackId);
         if (set == null || set.attackSprite == null)
@@ -114,14 +114,24 @@ public class CharacterAnimation : MonoBehaviour
             set.vfx.SetActive(true);
             set.vfx.transform.position = spawnPos;
         }
-
+        
+        if (!string.IsNullOrEmpty(soundEffect) && moveAttack == null)
+            SoundEffectManager.Instance.PlaySound2D(soundEffect);
+        
         if (moveAttack != null)
-            moveAttack.PlayAnimation(spawnPos, IdleAnimation);
+        {
+            if (directions.Length == 1)
+                moveAttack.PlayAnimationByPointDirection(directions[0], soundEffect, IdleAnimation);
+            else
+                moveAttack.PlayAnimationByVector(spawnPos, soundEffect, IdleAnimation);
+        }
         else
+        {
             SetAnimationRoutine(DelayIdleAnimation());
+        }
     }
 
-    public void AnticipationAnimation(PointDirection[] directions, int attackId)
+    public void AnticipationAnimation(PointDirection[] directions, int attackId, string soundEffect)
     {
         AttackAnimationSet set = GetAttackSet(attackId);
         if (set == null || set.anticipationSprite == null)
@@ -132,7 +142,7 @@ public class CharacterAnimation : MonoBehaviour
         if (bobEffect != null)
             bobEffect.StopBobbing();
 
-        SetAnimationRoutine(DelayAttackAnimation(directions, attackId));
+        SetAnimationRoutine(DelayAttackAnimation(directions, attackId, soundEffect));
     }
 
     public void PlayHealAnimation()
@@ -145,10 +155,10 @@ public class CharacterAnimation : MonoBehaviour
         SetAnimationRoutine(HealingAnimation());
     }
 
-    private IEnumerator DelayAttackAnimation(PointDirection[] directions, int attackId)
+    private IEnumerator DelayAttackAnimation(PointDirection[] directions, int attackId, string soundEffect)
     {
-        yield return new WaitForSeconds(0.5f);
-        AttackAnimation(directions, attackId);
+        yield return new WaitForSeconds(.5f);
+        AttackAnimation(directions, attackId, soundEffect);
     }
 
     private IEnumerator DelayIdleAnimation()

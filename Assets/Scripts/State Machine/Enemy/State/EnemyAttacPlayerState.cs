@@ -5,7 +5,8 @@ public class EnemyAttacPlayerState : StateSO
 {
     [SerializeField] private float minAttackTime;
     [SerializeField] private float maxAttackTime;
-
+    [SerializeField] private string soundEffect;
+    
     private float _currTime;
     private float _targetTime;
     
@@ -22,7 +23,7 @@ public class EnemyAttacPlayerState : StateSO
         {
             var point = ManagerPosition.Instance.CurrentPlayer;
             
-            character.CharacterAttack.OnAttackByState(point);
+            character.CharacterAttack.OnAttackByState(point, soundEffect);
             
             ResetCondition();
         }

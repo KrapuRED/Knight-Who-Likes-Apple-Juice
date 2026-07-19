@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackState
   minAttackTime: 10
   maxAttackTime: 20
+  soundEffect: minion_attack
