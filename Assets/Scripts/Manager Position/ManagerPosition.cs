@@ -34,21 +34,24 @@ public class ManagerPosition : MonoBehaviour
         return pointMovements[randomIndex];
     }
 
-    public void DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage, PointDirection direction, int indexAttack)
+    public float DropHitBoxByPoint(PointMovement attackPoint, Character ownerCharacter, float damage, PointDirection direction, int indexAttack)
     {
+        float warningDelay = 0f;
         bool foundMatch = false;
 
         foreach (var point in pointMovements)
         {
             if (attackPoint.PointDirection == point.PointDirection)
             {
-                point.ActivateHitBox(ownerCharacter, damage, direction, indexAttack);
+                warningDelay = point.ActivateHitBox(ownerCharacter, damage, direction, indexAttack);
                 foundMatch = true;
             }
         }
 
         if (!foundMatch)
             Debug.LogWarning($"No point found matching direction {attackPoint.PointDirection}!");
+
+        return warningDelay;
     }
     
     public List<PointMovement> GetMultiplePointMovements()

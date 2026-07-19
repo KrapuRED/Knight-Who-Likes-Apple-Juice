@@ -6,6 +6,8 @@ public class EnemyRandomAttackState : StateSO
 {
     [SerializeField] private float minAttackTime;
     [SerializeField] private float maxAttackTime;
+    [SerializeField] private string soundEffect;
+    
 
     private float _currTime;
     private float _targetTime;
@@ -23,7 +25,7 @@ public class EnemyRandomAttackState : StateSO
         {
             var point = ManagerPosition.Instance.GetRandomPoint();
             
-            character.CharacterAttack.OnAttackByState(point);
+            character.CharacterAttack.OnAttackByState(point, soundEffect);
             
             ResetCondition();
         }

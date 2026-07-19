@@ -32,6 +32,7 @@ public class CharacterHealth : MonoBehaviour
     public void UpdateHealthRestore(float amount)
     {
         owenrCharacter.CharacterAnimation.PlayHealAnimation();
+        SoundEffectManager.Instance.PlaySound2D("player_heal");
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         

@@ -58,8 +58,6 @@ public class HitboxVFX : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"Hit {other.gameObject.name} for {_damageAmount}");
-        
         var character = other.GetComponent<Character>();
         
         if (character == null)
